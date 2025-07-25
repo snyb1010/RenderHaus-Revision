@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Clipt - Hire Amazing Video Editors</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Enable Tailwind dark mode class strategy
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          keyframes: {
+            fadeSlideInUp: {
+              '0%': { opacity: '0', transform: 'translateY(30px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+            glow: {
+              '0%, 100%': { boxShadow: '0 0 8px 3px rgba(255, 255, 255, 0.6)' },
+              '50%': { boxShadow: '0 0 20px 8px rgba(255, 255, 255, 1)' },
+            },
+            pulseColor: {
+              '0%, 100%': { color: '#facc15' },
+              '50%': { color: '#f87171' },
+            },
+            bounceArrow: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-10px)' },
+            },
+          },
+          animation: {
+            fadeSlideInUp: 'fadeSlideInUp 0.7s ease forwards',
+            glow: 'glow 2.5s ease-in-out infinite',
+            pulseColor: 'pulseColor 3s ease-in-out infinite',
+            bounceArrow: 'bounceArrow 1.2s ease-in-out infinite',
+          },
+          colors: {
+            cliptGradientStart: '#8a2387',
+            cliptGradientMid: '#e94057',
+            cliptGradientEnd: '#f27121',
+          },
+          boxShadow: {
+            'glow-red': '0 0 15px 3px rgba(239, 68, 68, 0.75)',
+            'glow-green': '0 0 20px 4px rgba(34, 197, 94, 0.9)',
+            'glow-blue': '0 0 18px 4px rgba(59, 130, 246, 0.9)',
+          },
+          fontFamily: {
+            'sans': ['Poppins', 'ui-sans-serif', 'system-ui'],
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #5c258d, #4389a2, #273c75, #8a2387, #e94057);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      min-height: 100vh;
+      color: white;
+    }
+    @keyframes gradientBG {
+      0% {background-position:0% 50%;}
+      50% {background-position:100% 50%;}
+      100% {background-position:0% 50%;}
+    }
+
+    /* Custom scrollbar for dark background */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background-color: rgba(255,255,255,0.2);
+      border-radius: 10px;
+      border: 2px solid transparent;
+      background-clip: content-box;
+      transition: background-color 0.3s ease;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background-color: rgba(255,255,255,0.4);
+    }
+
+    /* Animations & transitions enhancements */
+    .btn-glow {
+      animation: glow 3s ease-in-out infinite;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .btn-glow:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px 6px rgba(255,182,193,0.8);
+    }
+    /* Cards shadow on hover */
+    .card-hover:hover {
+      box-shadow: 0 8px 32px rgba(255,255,255,0.35);
+      transform: translateY(-8px);
+      transition: all 0.4s ease;
+    }
+    /* Link underline grow effect */
+    a.underline-grow {
+      position: relative;
+      color: #f87171;
+      font-weight: 600;
+    }
+    a.underline-grow::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      height: 2px;
+      width: 0;
+      background: #f87171;
+      transition: width 0.3s ease;
+      border-radius: 10px;
+    }
+    a.underline-grow:hover::after {
+      width: 100%;
+    }
+
+    /* Arrow bounce animation */
+    .arrow-bounce {
+      animation: bounceArrow 1.2s ease infinite;
+    }
+
+    /* FAQ accordion smooth */
+    details summary::-webkit-details-marker {
+      display:none;
+    }
+    details summary {
+      cursor: pointer;
+      padding-right: 1rem;
+      position: relative;
+      list-style: none;
+    }
+    details summary::after {
+      content: '+';
+      position: absolute;
+      right: 0;
+      font-weight: 900;
+      transition: transform 0.3s ease;
+    }
+    details[open] summary::after {
+      content: '-';
+      transform: rotate(180deg);
+    }
+
+  </style>
+</head>
+<body class="overflow-x-hidden">
+
+  <!-- Navigation -->
+  <nav class="max-w-7xl mx-auto px-5 py-4 flex items-center justify-between text-white">
+    <h1 class="text-2xl font-bold tracking-tight select-none">Clipt</h1>
+    <ul class="hidden sm:flex space-x-8 font-semibold text-lg">
+      <li><a href="#how" class="hover:text-cliptGradientStart transition">How much can you save?</a></li>
+      <li><a href="#pricing" class="hover:text-cliptGradientStart transition">Pricing</a></li>
+      <li><a href="#about" class="hover:text-cliptGradientStart transition">About</a></li>
+      <li><a href="#faq" class="hover:text-cliptGradientStart transition">FAQ</a></li>
+    </ul>
+    <a href="#start-hiring" class="hidden sm:inline-block px-4 py-2 border border-transparent rounded-md bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 text-white font-semibold hover:brightness-110 transition btn-glow">Start Hiring</a>
+    <button id="mobile-menu-btn" aria-label="Mobile menu" class="sm:hidden text-white focus:outline-none">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 8h16M4 16h16" />
+      </svg>
+    </button>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="sm:hidden bg-gradient-to-r from-pink-600 via-red-600 to-yellow-600 text-white px-5 py-4 hidden">
+    <ul class="space-y-4 font-semibold">
+      <li><a href="#how" class="block" onclick="toggleMobileMenu()">How much can you save?</a></li>
+      <li><a href="#pricing" class="block" onclick="toggleMobileMenu()">Pricing</a></li>
+      <li><a href="#about" class="block" onclick="toggleMobileMenu()">About</a></li>
+      <li><a href="#faq" class="block" onclick="toggleMobileMenu()">FAQ</a></li>
+      <li><a href="#start-hiring" class="block font-bold btn-glow px-3 py-1 rounded-md" onclick="toggleMobileMenu()">Start Hiring</a></li>
+    </ul>
+  </div>
+
+  <!-- Header / Hero Section -->
+  <header class="relative max-w-7xl mx-auto px-5 py-16 text-center sm:py-24">
+    <h2 class="mb-4 text-4xl sm:text-5xl font-extrabold tracking-tight leading-tight text-white animate-fadeSlideInUp">
+      Hire <span class="text-pink-400 animate-pulseColor">amazing</span> <span class="text-purple-400 animate-pulseColor">video editors</span><br />
+      for <span class="bg-clip-text text-transparent bg-gradient-to-r from-green-400 via-blue-500 to-purple-600 font-bold">70% less than US employees</span>
+    </h2>
+    <p class="max-w-xl mx-auto mb-10 text-white/90 text-lg sm:text-xl font-medium animate-fadeSlideInUp" style="animation-delay: 0.3s;">
+      We're a staffing agency for placing top overseas editors into your company. Build your content machine — faster, smarter, and more affordably.
+    </p>
+    <a href="#start-hiring" class="inline-block rounded-md text-white bg-gradient-to-r from-pink-600 via-red-600 to-yellow-500 px-8 py-3 font-semibold text-lg shadow-lg transition hover:scale-105 hover:brightness-110 btn-glow animate-fadeSlideInUp" style="animation-delay: 0.6s;">START HIRING</a>
+
+    <!-- Who are you? Illustration and buttons -->
+    <section aria-label="Who are you?" class="mt-20 max-w-5xl mx-auto text-center animate-fadeSlideInUp" style="animation-delay: 0.9s;">
+      <h3 class="mb-3 text-white text-xl font-semibold">Who are you?</h3>
+      <p class="mb-8 text-white/70 text-sm sm:text-base">
+         Click on a person <span class="inline-block arrow-bounce" aria-hidden="true">➡️</span>
+      </p>
+
+      <div class="flex flex-wrap justify-center gap-8">
+        <!-- Cards with cartoon styled placeholders -->
+        <article class="w-24 sm:w-28 flex flex-col items-center space-y-2 cursor-pointer card-hover rounded-lg bg-gradient-to-br from-purple-700 via-purple-900 to-indigo-900 p-3 shadow-lg transition duration-400" tabindex="0" role="button" aria-pressed="false" aria-label="Podcaster option">
+          <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/a38344f6-401e-4658-a985-8f89cce20b45.png" alt="Cartoonish happy podcaster holding microphone in casual wear" class="w-20 h-20 rounded-full object-cover" onerror="this.style.opacity='0';" />
+          <p class="text-xs sm:text-sm text-white font-semibold select-none">PODCASTER</p>
+        </article>
+
+        <article class="w-24 sm:w-28 flex flex-col items-center space-y-2 cursor-pointer card-hover rounded-lg bg-gradient-to-br from-green-700 via-green-900 to-teal-900 p-3 shadow-lg transition duration-400" tabindex="0" role="button" aria-pressed="false" aria-label="YouTuber option">
+          <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/a2972532-5860-4e03-8fb0-40eac5884a47.png" alt="Cartoon young YouTuber enthusiast with camera and headphones" class="w-20 h-20 rounded-full object-cover" onerror="this.style.opacity='0';" />
+          <p class="text-xs sm:text-sm text-white font-semibold select-none">YOUTUBER</p>
+        </article>
+
+        <article class="w-24 sm:w-28 flex flex-col items-center space-y-2 cursor-pointer card-hover rounded-lg bg-gradient-to-br from-sky-700 via-sky-900 to-blue-900 p-3 shadow-lg transition duration-400" tabindex="0" role="button" aria-pressed="false" aria-label="TikToker option">
+          <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/5f868029-c034-4e2f-b068-3b74328beed7.png" alt="Cartoon TikToker with smartphone recording happy and in motion" class="w-20 h-20 rounded-full object-cover" onerror="this.style.opacity='0';" />
+          <p class="text-xs sm:text-sm text-white font-semibold select-none">TIKTOKER</p>
+        </article>
+
+        <article class="w-24 sm:w-28 flex flex-col items-center space-y-2 cursor-pointer card-hover rounded-lg bg-gradient-to-br from-red-700 via-red-900 to-rose-900 p-3 shadow-lg transition duration-400" tabindex="0" role="button" aria-pressed="false" aria-label="Agency option">
+          <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/10635ad7-3ea7-433f-a6be-516a49292632.png" alt="Cartoon agency team member formally dressed with laptop and phone" class="w-20 h-20 rounded-full object-cover" onerror="this.style.opacity='0';" />
+          <p class="text-xs sm:text-sm text-white font-semibold select-none">AGENCY</p>
+        </article>
+
+        <article class="w-24 sm:w-28 flex flex-col items-center space-y-2 cursor-pointer card-hover rounded-lg bg-gradient-to-br from-orange-700 via-orange-900 to-amber-900 p-3 shadow-lg transition duration-400" tabindex="0" role="button" aria-pressed="false" aria-label="Media company option">
+          <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/879d6963-8342-467a-a0a4-d3a0ce6116bc.png" alt="Cartoon media company professional excited with headphones and camera" class="w-20 h-20 rounded-full object-cover" onerror="this.style.opacity='0';" />
+          <p class="text-xs sm:text-sm text-white font-semibold select-none">MEDIA COMPANY</p>
+        </article>
+
+        <article class="w-24 sm:w-28 flex flex-col items-center space-y-2 cursor-pointer card-hover rounded-lg bg-gradient-to-br from-cyan-700 via-cyan-900 to-blue-900 p-3 shadow-lg transition duration-400" tabindex="0" role="button" aria-pressed="false" aria-label="Startup option">
+          <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/b3bc9528-d7e1-4237-9f5c-595764cd75ed.png" alt="Cartoon young startup founder smiling with computer and coffee mug" class="w-20 h-20 rounded-full object-cover" onerror="this.style.opacity='0';" />
+          <p class="text-xs sm:text-sm text-white font-semibold select-none">STARTUP</p>
+        </article>
+      </div>
+
+      <p class="mt-12 text-white/75 uppercase text-xs tracking-widest font-semibold">Clipt video editors are perfect for creators, agencies, and startups.</p>
+    </section>
+  </header>
+
+  <!-- Trusted By Section -->
+  <section aria-label="Trusted by companies" class="max-w-6xl mx-auto px-5 py-16 sm:py-20 flex flex-wrap justify-center gap-12 animate-fadeSlideInUp">
+    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/c217e372-fee6-4b7c-8140-29c0dac71ce8.png" alt="IPBT logo in gray on transparent background" class="h-8 object-contain" onerror="this.style.opacity='0';" />
+    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/8d33d67a-b9be-4037-b7a7-4efe45017699.png" alt="Redis logo in gray on transparent background" class="h-8 object-contain" onerror="this.style.opacity='0';" />
+    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/d240662f-2988-4925-b51a-1827cc5c02d6.png" alt="Synthesis logo in gray on transparent background" class="h-8 object-contain" onerror="this.style.opacity='0';" />
+    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/174849e3-d8fe-4863-afb6-e753e74375ca.png" alt="Buzzsprout logo in gray on transparent background" class="h-8 object-contain" onerror="this.style.opacity='0';" />
+    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/58aeba60-69fd-41e8-8586-1bcfb504a7a2.png" alt="Tubebuddy logo in gray on transparent background" class="h-8 object-contain" onerror="this.style.opacity='0';" />
+  </section>
+
+  <!-- No Job Posts Section -->
+  <section class="max-w-4xl mx-auto text-center mb-16 font-mono tracking-widest text-white/70 uppercase text-sm sm:text-base select-none">
+    <p>NO JOB POSTS.     NO SCREENING.     NO HEADACHES.</p>
+  </section>
+
+  <!-- Want cheap editors? Section -->
+  <section id="how" class="max-w-6xl mx-auto px-5 py-12 sm:py-24 grid grid-cols-1 md:grid-cols-2 gap-12 items-center animate-fadeSlideInUp">
+    <div>
+      <h3 class="text-3xl font-bold text-white mb-4 relative leading-snug">
+        Want <span class="text-green-400 font-extrabold">cheap</span> editors?
+        <span class="absolute -top-4 -left-8 animate-bounce text-green-400 font-extrabold text-3xl select-none" aria-hidden="true">*GREAT</span>
+      </h3>
+      <p class="text-lg text-white/85 max-w-md">
+        We find you the best overseas video editors for 70% less than US employees.
+      </p>
+    </div>
+    <div class="relative rounded-lg shadow-lg overflow-hidden max-w-md mx-auto hover:shadow-2xl transition-shadow duration-500">
+      <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/dbf7b97c-416e-4910-ac6a-7b86221176a5.png" alt="Smiling Asian female career English teacher having a video call on laptop with home background room and plants" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-500" onerror="this.style.opacity='0';" />
+      <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 text-white text-sm rounded-b-lg">
+        Career English Teacher <br /> Video call working with student, vibrant modern interior
+      </div>
+      <span class="absolute -top-6 right-8 text-pink-500 font-serif text-4xl select-none animate-pulseColor" aria-hidden="true">➔</span>
+    </div>
+  </section>
+
+  <!-- Video Showcase Section -->
+  <section class="max-w-6xl mx-auto px-5 mb-20">
+    <h3 class="text-center text-2xl sm:text-3xl font-bold mb-6 text-white">To make videos like these:</h3>
+    <div class="bg-black/70 rounded-lg shadow-lg p-6 relative max-w-5xl mx-auto">
+      <div class="flex justify-center space-x-3 mb-4 flex-wrap">
+        <button class="tag-btn hover:bg-cliptGradientStart/80 bg-white/20 text-white rounded-full px-3 py-1 font-semibold transition" data-filter="all">All</button>
+        <button class="tag-btn hover:bg-cliptGradientStart/80 bg-white/10 text-white rounded-full px-3 py-1 font-semibold transition" data-filter="ads">Ads</button>
+        <button class="tag-btn hover:bg-cliptGradientStart/80 bg-white/10 text-white rounded-full px-3 py-1 font-semibold transition" data-filter="podcast">Podcast</button>
+        <button class="tag-btn hover:bg-cliptGradientStart/80 bg-white/10 text-white rounded-full px-3 py-1 font-semibold transition" data-filter="clips">Clips</button>
+        <button class="tag-btn hover:bg-cliptGradientStart/80 bg-white/10 text-white rounded-full px-3 py-1 font-semibold transition" data-filter="youtube">YouTube</button>
+        <button class="tag-btn hover:bg-cliptGradientStart/80 bg-white/10 text-white rounded-full px-3 py-1 font-semibold transition" data-filter="explainers">Explainers</button>
+      </div>
+      <div class="aspect-video bg-gray-900 rounded-md shadow-inner flex justify-center items-center cursor-pointer group overflow-hidden relative">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-20 w-20 text-pink-600 group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M14.752 11.168l-6.518-3.753A.75.75 0 007 8.345v7.31a.75.75 0 001.234.63l6.518-3.753a.75.75 0 000-1.292z"/>
+        </svg>
+        <span class="absolute top-2 right-2 text-xs text-white/50 select-none">Video Placeholder</span>
+      </div>
+    </div>
+    <p class="text-center text-white/60 italic mt-2">...but it's hard to find editors.</p>
+  </section>
+
+  <!-- Features Section -->
+  <section class="max-w-6xl mx-auto px-5 grid grid-cols-1 md:grid-cols-3 gap-8 mb-20 animate-fadeSlideInUp">
+    <article class="bg-gradient-to-br from-pink-600 to-red-600 rounded-lg p-6 text-white shadow-lg card-hover cursor-default">
+      <h4 class="text-xl font-bold mb-3 tracking-wide">BETTER EDITING</h4>
+      <ul class="space-y-2 text-sm leading-relaxed">
+        <li>• We find you the best editor for your video style</li>
+        <li>• Video transcripts & rough cuts</li>
+        <li>• Multiple easy-to-use file versions in final edit</li>
+      </ul>
+      <button class="mt-6 inline-block px-5 py-2 border border-white rounded-md font-semibold transition hover:bg-white hover:text-red-600">Start Hiring</button>
+    </article>
+    <article class="bg-gradient-to-br from-green-700 to-green-900 rounded-lg p-6 text-white shadow-lg card-hover cursor-default">
+      <h4 class="text-xl font-bold mb-3 tracking-wide">LOW COST</h4>
+      <ul class="space-y-2 text-sm leading-relaxed">
+        <li>• Save up to 70%</li>
+        <li>• Use clip editors at entry-level to scale</li>
+        <li>• Great editors start at $395/month</li>
+      </ul>
+      <button class="mt-6 inline-block px-5 py-2 border border-white rounded-md font-semibold transition hover:bg-white hover:text-green-900">Start Hiring</button>
+    </article>
+    <article class="bg-gradient-to-br from-indigo-700 to-indigo-900 rounded-lg p-6 text-white shadow-lg card-hover cursor-default">
+      <h4 class="text-xl font-bold mb-3 tracking-wide">FAST HIRING</h4>
+      <ul class="space-y-2 text-sm leading-relaxed">
+        <li>• We hand-select your editor and start work</li>
+        <li>• We do all the sourcing, screening, and training for you</li>
+      </ul>
+      <button class="mt-6 inline-block px-5 py-2 border border-white rounded-md font-semibold transition hover:bg-white hover:text-indigo-900">Start Hiring</button>
+    </article>
+  </section>
+
+  <!-- How it works -->
+  <section id="about" class="max-w-6xl mx-auto px-5 mb-20">
+    <h3 class="text-center text-3xl font-extrabold mb-12 text-white">How it works</h3>
+    <ol class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 text-white/85 font-medium text-lg leading-relaxed">
+      <li>
+        <div class="flex items-center mb-3 space-x-3">
+          <div class="text-4xl font-extrabold text-cliptGradientStart">1</div>
+          <h4 class="font-semibold">Tell us what you want</h4>
+        </div>
+        <p>Hit the "Start Hiring" button to tell us about the videos you want to make and who you want as your editor.</p>
+      </li>
+      <li>
+        <div class="flex items-center mb-3 space-x-3">
+          <div class="text-4xl font-extrabold text-cliptGradientStart">2</div>
+          <h4 class="font-semibold">Review samples</h4>
+        </div>
+        <p>We screen editors and send you sample videos for your review so you can find perfect editors quickly, plus we keep backups so you won't lose edits if you leave or switch later.</p>
+      </li>
+      <li>
+        <div class="flex items-center mb-3 space-x-3">
+          <div class="text-4xl font-extrabold text-cliptGradientStart">3</div>
+          <h4 class="font-semibold">Hire your editor</h4>
+        </div>
+        <p>Once you're happy, pick editors from the clipper pool and start work instantly. Editors can begin within days.</p>
+      </li>
+    </ol>
+  </section>
+
+  <!-- Future Editors Meet -->
+  <section class="max-w-6xl mx-auto px-5 mb-20">
+    <h3 class="text-center text-3xl font-extrabold mb-10 text-white">Meet your future video editor</h3>
+    <p class="text-white/80 mb-12 max-w-xl mx-auto text-center">
+      Scroll through the top 3% of video editors that apply to Clipt. You will find editors with the skills, expertise, and creativity to support all your video needs.
+    </p>
+    <div class="flex justify-center flex-wrap gap-8">
+      <div class="bg-gradient-to-br from-pink-600 to-pink-800 rounded-lg p-5 shadow-lg max-w-xs w-full card-hover transition">
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/72b01b2c-e45b-4e0c-81f6-b717e96131aa.png" alt="Photo of Maria, smiling, female professional video editor with headphones and casual office background" class="rounded-lg mb-4 w-full object-cover aspect-[4/4]" onerror="this.style.opacity='0';" />
+        <h4 class="text-white font-bold text-xl mb-1">Maria</h4>
+        <p class="text-pink-200 text-sm">YouTube Editor</p>
+        <p class="mt-2 text-white/80 text-sm font-semibold select-none">Fast & reliable edits, smooth transitions, and dynamic thumbnails.</p>
+      </div>
+      <div class="bg-gradient-to-br from-purple-600 to-purple-800 rounded-lg p-5 shadow-lg max-w-xs w-full card-hover transition">
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/2702817e-a847-47d0-bd56-5c3572a788c5.png" alt="Photo of Mia, female video editor with glasses and modern co-working space background" class="rounded-lg mb-4 w-full object-cover aspect-[4/4]" onerror="this.style.opacity='0';" />
+        <h4 class="text-white font-bold text-xl mb-1">Mia</h4>
+        <p class="text-purple-300 text-sm mb-2">Instagram & TikTok Editor</p>
+        <p class="mt-1 text-white/80 text-sm font-semibold select-none">Creative social video editing with viral trends integration.</p>
+      </div>
+      <div class="bg-gradient-to-br from-indigo-600 to-indigo-800 rounded-lg p-5 shadow-lg max-w-xs w-full card-hover transition">
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/89189c5d-46c8-46d3-8251-501dc940f8db.png" alt="Photo of Ariel, female professional video editor in modern studio environment" class="rounded-lg mb-4 w-full object-cover aspect-[4/4]" onerror="this.style.opacity='0';" />
+        <h4 class="text-white font-bold text-xl mb-1">Ariel</h4>
+        <p class="text-indigo-300 text-sm mb-2">TikTok & YouTube Shorts</p>
+        <p class="mt-1 text-white/80 text-sm font-semibold select-none">Dynamic and quick turnaround short form content edits.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section id="pricing" class="max-w-6xl mx-auto px-5 mb-20 text-center">
+    <h3 class="text-white text-3xl font-extrabold mb-8">Simple pricing, exceptional value</h3>
+    <div class="inline-block bg-gradient-to-r from-pink-600 via-red-600 to-yellow-500 rounded-lg shadow-lg p-8 max-w-md w-full mx-auto relative overflow-hidden z-10">
+      <h4 class="text-5xl font-extrabold text-white mb-6">$2,995</h4>
+      <p class="text-white/80 mb-6 font-semibold text-lg">per month</p>
+      <button class="px-8 py-3 bg-white rounded-md font-semibold text-cliptGradientEnd hover:brightness-90 transition btn-glow">Start Hiring</button>
+      <ul class="text-white/70 text-left mt-6 space-y-3 text-sm font-medium max-w-xs mx-auto">
+        <li>+ All editors working based from the Philippines</li>
+        <li>+ Full-time commitment (40 hours per week)</li>
+        <li>+ World-class editing, motion graphics, and animation</li>
+        <li>+ Priority on fast turnaround for project deadlines for you</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faq" class="max-w-4xl mx-auto px-5 mb-20" aria-label="Frequently Asked Questions">
+    <h3 class="text-center text-3xl font-extrabold mb-8 text-white">FAQs</h3>
+    <div class="space-y-4">
+      <details class="bg-black/40 rounded-lg p-4 text-white">
+        <summary class="font-semibold text-lg">How much does this cost?</summary>
+        <p class="mt-2 text-white/75">Our pricing starts at $2,995 per month for a full-time dedicated editor from the Philippines.</p>
+      </details>
+      <details class="bg-black/40 rounded-lg p-4 text-white">
+        <summary class="font-semibold text-lg">Why the hires in the Philippines?</summary>
+        <p class="mt-2 text-white/75">Because of the country's large creative talent pool, great English skills, and favorable time zone for US-based businesses.</p>
+      </details>
+      <details class="bg-black/40 rounded-lg p-4 text-white">
+        <summary class="font-semibold text-lg">Will my video editor only work for me?</summary>
+        <p class="mt-2 text-white/75">Yes, each editor is dedicated to a single client to guarantee quality and communication efficiency.</p>
+      </details>
+      <details class="bg-black/40 rounded-lg p-4 text-white">
+        <summary class="font-semibold text-lg">What about the time difference?</summary>
+        <p class="mt-2 text-white/75">We carefully match editors with clients with compatible time overlaps, and most editors have flexible schedules.</p>
+      </details>
+      <details class="bg-black/40 rounded-lg p-4 text-white">
+        <summary class="font-semibold text-lg">How many videos can my editor make?</summary>
+        <p class="mt-2 text-white/75">It depends on video complexity and length; usually 10-20 short videos per week is feasible with fast turnarounds.</p>
+      </details>
+    </div>
+    <div class="text-center mt-8">
+      <button class="px-6 py-2 bg-pink-600 rounded-full hover:bg-pink-700 transition font-semibold text-white btn-glow">See more</button>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section id="start-hiring" class="max-w-7xl mx-auto px-5 py-16 rounded-lg mb-16 bg-gradient-to-r from-pink-600 to-purple-700 text-white text-center shadow-lg animate-fadeSlideInUp">
+    <h3 class="text-4xl font-extrabold mb-6">Ready to get started?</h3>
+    <p class="text-lg max-w-xl mx-auto mb-8 text-white/80">We find you the best overseas video editors for 70% less than US employees.</p>
+    <a href="#pricing" class="inline-block rounded-md bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-600 px-10 py-3 font-bold shadow-lg hover:brightness-110 btn-glow transition">
+      START HIRING
+    </a>
+
+    <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-7 max-w-6xl mx-auto">
+      <!-- Profile Cards -->
+      <div class="bg-gradient-to-tr from-pink-500 via-pink-700 to-pink-900 rounded-lg p-5 text-white shadow-lg card-hover">
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/36a40c34-b7a0-4f11-9dc1-7ccfb0ac3d62.png" alt="Profile photo of Maria, experienced YouTube video editor, smiling wearing headset in office" class="rounded-lg mb-3 w-full object-cover aspect-[4/4]" onerror="this.style.opacity='0';" />
+        <h4 class="text-lg font-bold mb-0.5">Maria</h4>
+        <p class="text-pink-300 text-sm font-semibold">YouTube Editor</p>
+        <p class="text-pink-300 text-xs font-mono select-none">Fast & reliable edits, smooth transitions.</p>
+      </div>
+      <div class="bg-gradient-to-tr from-purple-500 via-purple-700 to-purple-900 rounded-lg p-5 text-white shadow-lg card-hover">
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/02923e11-6e24-42d5-80fb-f3a8ce9fd701.png" alt="Profile photo of Mia, expert Instagram editor, smiling with blurred creative studio background" class="rounded-lg mb-3 w-full object-cover aspect-[4/4]" onerror="this.style.opacity='0';" />
+        <h4 class="text-lg font-bold mb-0.5">Mia</h4>
+        <p class="text-purple-300 text-sm font-semibold">Instagram Editor</p>
+        <p class="text-purple-300 text-xs font-mono select-none">Creative styles, viral trends integration.</p>
+      </div>
+      <div class="bg-gradient-to-tr from-yellow-400 via-yellow-500 to-yellow-600 rounded-lg p-5 text-black shadow-lg card-hover">
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/4bdb3101-8547-47ba-9fa6-6d01d2985ccd.png" alt="Profile photo of Ariel, dynamic TikTok content editor, smiling with modern workspace behind" class="rounded-lg mb-3 w-full object-cover aspect-[4/4]" onerror="this.style.opacity='0';" />
+        <h4 class="text-lg font-bold mb-0.5 text-black">Ariel</h4>
+        <p class="text-black/75 text-sm font-semibold">TikTok Editor</p>
+        <p class="text-black/75 text-xs font-mono select-none">Quick turnaround, engaging edits.</p>
+      </div>
+      <div class="bg-gradient-to-tr from-blue-500 via-blue-700 to-blue-900 rounded-lg p-5 text-white shadow-lg card-hover">
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/8d031fae-74bc-41bf-9e21-ed3e34a664ba.png" alt="Profile photo of Kim, skilled Facebook ad video editor, happy with headset in studio" class="rounded-lg mb-3 w-full object-cover aspect-[4/4]" onerror="this.style.opacity='0';" />
+        <h4 class="text-lg font-bold mb-0.5">Kim</h4>
+        <p class="text-blue-300 text-sm font-semibold">Facebook Ads Editor</p>
+        <p class="text-blue-300 text-xs font-mono select-none">Fast, seamless ad video delivery.</p>
+      </div>
+      <div class="bg-gradient-to-tr from-pink-400 via-pink-600 to-pink-700 rounded-lg p-5 text-white shadow-lg card-hover">
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/84e0a2bf-3d27-4feb-9929-0d5b329c76df.png" alt="Profile photo of Jon, innovative agency video editor, professional and smiling" class="rounded-lg mb-3 w-full object-cover aspect-[4/4]" onerror="this.style.opacity='0';" />
+        <h4 class="text-lg font-bold mb-0.5">Jon</h4>
+        <p class="text-pink-300 text-sm font-semibold">Agency Editor</p>
+        <p class="text-pink-300 text-xs font-mono select-none">Creative, reliable, and highly skilled.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="max-w-7xl mx-auto px-5 py-10 border-t border-white/20 text-white/70 flex flex-col sm:flex-row justify-between items-center text-sm font-light">
+    <p>© 2024 Clipt. All rights reserved.</p>
+    <a href="#" class="hover:underline hover:text-white mt-3 sm:mt-0">Privacy policy</a>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+    function toggleMobileMenu() {
+      if (!mobileMenu.classList.contains('hidden')) {
+        mobileMenu.classList.add('hidden');
+      }
+    }
+
+    // Video tags filter logic - dummy filtering effect
+    const tagButtons = document.querySelectorAll('.tag-btn');
+    tagButtons.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        tagButtons.forEach(b => {
+          b.classList.remove('bg-cliptGradientStart');
+          b.classList.remove('bg-white/20');
+          b.classList.add('bg-white/10');
+        });
+        e.target.classList.add('bg-cliptGradientStart');
+        e.target.classList.remove('bg-white/10');
+        e.target.classList.add('bg-white/20');
+        // For demo: no actual video filtering because only placeholder present
+      });
+    });
+  </script>
+</body>
+</html>
+

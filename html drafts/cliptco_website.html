@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Clippt - Hire Amazing Video Editors</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  // Tailwind config for extended colors
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          royalblue: {
+            light: '#5A7FFF',
+            DEFAULT: '#3B53FF',
+            dark: '#2A3BBA'
+          },
+          glasslight: 'rgba(255, 255, 255, 0.15)',
+          glassdark: 'rgba(0, 0, 0, 0.4)'
+        },
+        fontFamily: {
+          sans: ['Inter', 'ui-sans-serif', 'system-ui']
+        },
+        keyframes: {
+          fadeInUp: {
+            '0%': {opacity: '0', transform: 'translateY(20px)'},
+            '100%': {opacity: '1', transform: 'translateY(0)'}
+          },
+          bounceArrow: {
+            '0%, 100%': {transform: 'translateX(0)'},
+            '50%': {transform: 'translateX(6px)'}
+          },
+          glowPulse: {
+            '0%, 100%': {boxShadow: '0 0 8px 2px rgba(59, 83, 255, 0.7)'},
+            '50%': {boxShadow: '0 0 16px 4px rgba(59, 83, 255, 1)'}
+          }
+        },
+        animation: {
+          fadeInUp: 'fadeInUp 0.8s ease forwards',
+          bounceArrow: 'bounceArrow 1.2s infinite ease-in-out',
+          glowPulse: 'glowPulse 2.5s infinite ease-in-out'
+        }
+      }
+    }
+  };
+</script>
+<style>
+  /* Custom scrollbar for dark mode */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(91, 117, 255, 0.6);
+    border-radius: 24px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  /* Glassmorphism main container */
+  .glass-bg-light {
+    background: rgba(255 255 255 / 0.12);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    border: 1px solid rgba(255 255 255 / 0.2);
+  }
+  .glass-bg-dark {
+    background: rgba(0 0 0 / 0.35);
+    backdrop-filter: saturate(180%) blur(24px);
+    -webkit-backdrop-filter: saturate(180%) blur(24px);
+    border: 1px solid rgba(0 0 0 / 0.4);
+  }
+  /* Transition for mode switching */
+  body {
+    transition: background-color 0.5s ease, color 0.5s ease;
+  }
+
+  /* Arrow bounce for "Click on a person" */
+  .arrow-bounce {
+    animation: bounceArrow 1.2s infinite ease-in-out;
+  }
+
+  /* Button neon glowing effect */
+  .btn-neon {
+    border-width: 1.5px;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(90deg, #ff4154, #5a7fff);
+    transition: box-shadow 0.3s ease, border-image-source 0.6s ease;
+  }
+
+  .btn-neon:hover {
+    box-shadow: 0 0 10px 2px #ff4154, 0 0 30px 8px #5a7fff;
+    border-image-source: linear-gradient(90deg, #5a7fff, #ff4154);
+  }
+
+  /* Fade animation delay helper */
+  [class*="delay-"] {
+    opacity: 0;
+    animation-fill-mode: forwards;
+  }
+  .delay-100 { animation-delay: 0.1s; }
+  .delay-200 { animation-delay: 0.2s; }
+  .delay-300 { animation-delay: 0.3s; }
+  .delay-400 { animation-delay: 0.4s; }
+  .delay-500 { animation-delay: 0.5s; }
+  .delay-600 { animation-delay: 0.6s; }
+  .delay-700 { animation-delay: 0.7s; }
+  .delay-800 { animation-delay: 0.8s; }
+
+  /* Accordion arrow rotation */
+  .accordion-button[aria-expanded="true"] svg {
+    transform: rotate(180deg);
+  }
+  .accordion-button svg {
+    transition: transform 0.3s ease;
+  }
+</style>
+</head>
+<body class="bg-gradient-to-br from-royalblue-dark to-royalblue-light text-white font-sans dark:bg-gradient-to-br dark:from-gray-900 dark:to-black transition-colors duration-500">
+
+<header class="fixed top-0 w-full backdrop-blur-md glass-bg-dark z-30 border-b border-gray-700">
+  <nav class="max-w-7xl mx-auto px-5 sm:px-8 flex items-center justify-between h-16 select-none">
+    <div class="text-2xl font-bold tracking-tight cursor-default select-text text-royalblue-light font-sans">
+      Clippt
+    </div>
+    <ul class="hidden md:flex space-x-8 text-sm font-medium text-slate-300 dark:text-slate-400">
+      <li><a href="#services" class="hover:text-royalblue-400 transition">Where to what?</a></li>
+      <li><a href="#pricing" class="hover:text-royalblue-400 transition">How much can you save?</a></li>
+      <li><a href="#pricing" class="hover:text-royalblue-400 transition">Pricing</a></li>
+      <li><a href="#about" class="hover:text-royalblue-400 transition">About</a></li>
+      <li><a href="#guide" class="hover:text-royalblue-400 transition">Guide</a></li>
+      <li><a href="#faq" class="hover:text-royalblue-400 transition">FAQ</a></li>
+    </ul>
+    <div class="flex items-center space-x-3">
+      <button id="mode-toggle" aria-label="Toggle dark/light mode"
+        class="p-2 text-royalblue-light dark:text-yellow-300 rounded-md hover:bg-royalblue-light/20 transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-royalblue-light">
+        <svg id="icon-sun" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m8.66-9h-1M4.34 12h-1m15.52 6.364l-.707-.707M6.343 6.343l-.707-.707m12.02 12.02l-.707-.707M6.343 17.657l-.707-.707M12 7a5 5 0 110 10 5 5 0 010-10z" />
+        </svg>
+        <svg id="icon-moon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 block" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z" />
+        </svg>
+      </button>
+      <a href="#start" class="btn-neon px-4 py-2 rounded-md font-semibold select-none text-sm transition-all duration-300 hover:brightness-110">
+        Start Hiring
+      </a>
+    </div>
+  </nav>
+</header>
+
+<main class="pt-24 max-w-7xl mx-auto px-5 sm:px-8 pb-20">
+
+<!-- Hero Section -->
+<section class="relative flex flex-col items-center text-center max-w-4xl mx-auto select-text">
+  <h1 class="text-white text-4xl sm:text-5xl font-extrabold max-w-3xl leading-tight tracking-tight mb-4 fadeInUp delay-100 animate-fadeInUp">
+    Hire 
+    <span class="text-rose-400">amazing</span> 
+    <span class="text-royalblue-light">video editors</span> 
+    for 70% less than US employees
+  </h1>
+  <p class="text-slate-300 mb-8 max-w-lg leading-relaxed fadeInUp delay-200 animate-fadeInUp">
+    We're a staffing agency for placing top overseas editors into your company. Build your content machine – faster, smarter, and more affordably.
+  </p>
+  <a id="start" href="#start" class="btn-neon inline-block px-8 py-3 rounded-lg text-lg font-semibold text-white shadow-md cursor-pointer fadeInUp delay-300 animate-fadeInUp">
+    START HIRING
+  </a>
+
+  <!-- Who are you Section -->
+  <h2 class="text-white mt-14 mb-3 text-2xl font-semibold underline underline-offset-8 cursor-default fadeInUp delay-400 animate-fadeInUp select-text">
+    Who are you?
+  </h2>
+  <div class="flex items-center justify-center gap-3 text-xs text-slate-400 mb-2 fadeInUp delay-500 animate-fadeInUp select-none">
+    <span>Click on a person</span>
+    <svg class="arrow-bounce w-6 h-6 inline-block" fill="none" stroke="white" stroke-width="1.7" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M3 12h18M12 3l9 9-9 9"></path>
+    </svg>
+  </div>
+
+  <!-- Characters -->
+  <div class="flex flex-wrap justify-center gap-4 max-w-xl">
+    <button aria-label="Podcaster profile" class="glass-bg-light dark:glass-bg-dark flex flex-col items-center w-20 p-3 rounded-xl shadow-lg hover:scale-110 transition-transform duration-300 ease-in-out cursor-pointer" data-name="Podcaster" tabindex="0">
+      <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/712861bb-1698-4be1-a9bb-9801bee77354.png" alt="Cartoon smiling podcaster sitting with headphones and mic, brown hair and polo shirt, colorful style" class="rounded-full mb-1" />
+      <span class="text-royalblue-light font-semibold select-text">Podcaster</span>
+    </button>
+
+    <button aria-label="YouTuber profile" class="glass-bg-light dark:glass-bg-dark flex flex-col items-center w-20 p-3 rounded-xl shadow-lg hover:scale-110 transition-transform duration-300 ease-in-out cursor-pointer" data-name="YouTuber" tabindex="0">
+      <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/8ef84ac8-7194-4a04-b648-ae8e1dea4aad.png" alt="Cartoon YouTuber with headset, green hoodie, animated style, friendly look" class="rounded-full mb-1" />
+      <span class="text-royalblue-light font-semibold select-text">YouTuber</span>
+    </button>
+
+    <button aria-label="TikToker profile" class="glass-bg-light dark:glass-bg-dark flex flex-col items-center w-20 p-3 rounded-xl shadow-lg hover:scale-110 transition-transform duration-300 ease-in-out cursor-pointer" data-name="TikToker" tabindex="0">
+      <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/fb9f5004-9044-4e2c-a699-54865a218c0d.png" alt="Cartoon young woman TikToker dancing, black hair with ponytail, casual clothes, cartoon style" class="rounded-full mb-1" />
+      <span class="text-royalblue-light font-semibold select-text">TikToker</span>
+    </button>
+
+    <button aria-label="Agency profile" class="glass-bg-light dark:glass-bg-dark flex flex-col items-center w-20 p-3 rounded-xl shadow-lg hover:scale-110 transition-transform duration-300 ease-in-out cursor-pointer" data-name="Agency" tabindex="0">
+      <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/898b58b0-93bb-4088-aa20-a91ea69e784f.png" alt="Cartoon man with beard wearing business casual clothes, representing video editing agency" class="rounded-full mb-1" />
+      <span class="text-royalblue-light font-semibold select-text">Agency</span>
+    </button>
+
+    <button aria-label="Media company profile" class="glass-bg-light dark:glass-bg-dark flex flex-col items-center w-20 p-3 rounded-xl shadow-lg hover:scale-110 transition-transform duration-300 ease-in-out cursor-pointer" data-name="Media Company" tabindex="0">
+      <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/70adb3ef-35ad-4615-8926-d4c15ff61e85.png" alt="Cartoon confident woman with curly hair and red sweater, representing media company" class="rounded-full mb-1" />
+      <span class="text-royalblue-light font-semibold select-text">Media Company</span>
+    </button>
+
+    <button aria-label="Startup profile" class="glass-bg-light dark:glass-bg-dark flex flex-col items-center w-20 p-3 rounded-xl shadow-lg hover:scale-110 transition-transform duration-300 ease-in-out cursor-pointer" data-name="Startup" tabindex="0">
+      <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/dcb26d18-7f01-48ed-90df-b34a53dca413.png" alt="Cartoon man with glasses and light blue shirt holding a laptop, representing startup" class="rounded-full mb-1" />
+      <span class="text-royalblue-light font-semibold select-text">Startup</span>
+    </button>
+  </div>
+</section>
+
+<!-- Partner Logos -->
+<section class="max-w-6xl mx-auto mt-14 mb-10 px-3 sm:px-0 text-slate-300 text-xs select-none flex flex-wrap justify-center gap-7 opacity-80 font-semibold">
+  <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/a8842e60-d004-490f-9487-fa475e12ac4e.png" alt="IPBT company logo, stylized text logo in white" class="grayscale opacity-60" />
+  <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/5332b4f7-88f8-48c8-bff3-95e795d67670.png" alt="Redis database company logo in white" class="grayscale opacity-60" />
+  <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/0c145bdf-bcbd-4d5a-ba44-99b92cc4a3f8.png" alt="Synthesys company textual logo in white" class="grayscale opacity-60" />
+  <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/5877781c-36b1-4039-afed-e17b891c28fc.png" alt="Buzzsprout podcast hosting logo in white" class="grayscale opacity-60" />
+  <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/7ff0d21b-2d37-4509-af36-f4a2b0d6d76a.png" alt="TubeBuddy video content keyword tool logo in white" class="grayscale opacity-60" />
+  <span class="px-2">+ 8 more</span>
+</section>
+
+<!-- No Job Posts Section -->
+<section class="max-w-4xl mx-auto text-center text-slate-400 uppercase font-bold tracking-widest mb-12 select-none">
+  <p class="inline-block border border-slate-500 rounded-lg px-4 py-2 shadow-lg glass-bg-dark">
+    NO JOB POSTS.     NO SCREENING.     NO HEADACHES.
+  </p>
+</section>
+
+<!-- Want cheap editors Section -->
+<section class="max-w-6xl mx-auto px-5 sm:px-8 grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-20">
+  <div class="text-white select-text fadeInUp delay-400 animate-fadeInUp">
+    <h2 class="font-extrabold text-3xl mb-3">
+      Want <span class="text-green-400">cheap</span> editors?
+    </h2>
+    <p class="text-slate-300 text-lg leading-relaxed max-w-md">
+      We find you the best overseas video editors for 70% less than US employees.
+    </p>
+  </div>
+  <div class="relative max-w-sm mx-auto shadow-lg rounded-xl glass-bg-light dark:glass-bg-dark overflow-hidden border border-royalblue-300 animate-glowPulse">
+    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/46532c34-840b-4e41-a8a7-3615c2512358.png" alt="Portrait of smiling woman sitting with laptop at home workspace, cozy modern room with plants and soft lighting" 
+      class="rounded-xl object-cover w-full h-auto" onerror="this.style.backgroundColor='#6773FF'" />
+    <div class="absolute bottom-0 bg-royalblue-dark bg-opacity-70 text-white p-4 rounded-b-xl text-sm font-medium">
+      Career English - expert work advice. Learn how to find your next remote editor.
+    </div>
+    <svg class="absolute bottom-4 right-4 w-6 h-6 text-royalblue-light arrow-bounce" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+    </svg>
+  </div>
+</section>
+
+<!-- Video Showcase Section -->
+<section class="max-w-5xl mx-auto px-5 sm:px-8 mb-20">
+  <h3 class="text-center text-white font-extrabold text-2xl mb-6">To make videos like these:</h3>
+  <div class="glass-bg-light dark:glass-bg-dark rounded-xl shadow-lg p-4 border border-royalblue-300">
+    <div class="flex flex-wrap justify-center gap-3 mb-4 select-none text-xs font-semibold text-slate-500">
+      <button class="px-3 py-1 rounded bg-royalblue-light text-white hover:bg-royalblue-dark transition">Ads</button>
+      <button class="px-3 py-1 rounded hover:bg-royalblue-light text-royalblue-light border border-royalblue-light transition">Podcast</button>
+      <button class="px-3 py-1 rounded hover:bg-royalblue-light text-royalblue-light border border-royalblue-light transition">Clips</button>
+      <button class="px-3 py-1 rounded hover:bg-royalblue-light text-royalblue-light border border-royalblue-light transition">YouTube</button>
+      <button class="px-3 py-1 rounded hover:bg-royalblue-light text-royalblue-light border border-royalblue-light transition">Explainers</button>
+    </div>
+    <div class="aspect-w-16 aspect-h-9 rounded overflow-hidden shadow-inner bg-black relative cursor-pointer group">
+      <video src="" aria-label="Placeholder video player" muted preload="metadata" class="w-full h-full object-cover"></video>
+      <button aria-label="Play video" class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 text-royalblue-light drop-shadow-lg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M14.752 12l-6.568 3.84v-7.68L14.752 12z" />
+        </svg>
+      </button>
+    </div>
+  </div>
+  <p class="text-center text-slate-300 italic mt-3 select-text">...but it's hard to find editors.</p>
+</section>
+
+<!-- How we place great editors FAST -->
+<section class="max-w-6xl mx-auto px-5 sm:px-8 mb-20">
+  <div class="grid md:grid-cols-3 gap-7 text-white select-text">
+    <div class="glass-bg-light dark:glass-bg-dark rounded-xl p-6 border border-rose-400 border-opacity-60 shadow-lg hover:shadow-rose-400 hover:shadow-lg transition ease-in-out duration-300">
+      <h4 class="uppercase font-bold text-xs text-rose-400 mb-2">Better Editing</h4>
+      <ul class="text-sm space-y-1 mb-4">
+        <li>• We find you the best editor for your video style</li>
+        <li>• We never send underqualified editors</li>
+        <li>• Finding is individualized and personal</li>
+      </ul>
+      <a href="#start" class="btn-neon block text-center text-rose-400 font-semibold rounded-md py-2 text-sm cursor-pointer select-none">Start Hiring</a>
+    </div>
+    <div class="glass-bg-light dark:glass-bg-dark rounded-xl p-6 border border-green-500 border-opacity-70 shadow-lg hover:shadow-green-500 hover:shadow-lg transition ease-in-out duration-300">
+      <h4 class="uppercase font-bold text-xs text-green-400 mb-2">Low Cost</h4>
+      <ul class="text-sm space-y-1 mb-4">
+        <li>• Save a huge amount of money compared to U.S.</li>
+        <li>• Great editors start at $2,999 / month</li>
+      </ul>
+      <a href="#start" class="btn-neon block text-center text-green-400 font-semibold rounded-md py-2 text-sm cursor-pointer select-none">Start Hiring</a>
+    </div>
+    <div class="glass-bg-light dark:glass-bg-dark rounded-xl p-6 border border-royalblue-400 border-opacity-70 shadow-lg hover:shadow-royalblue-400 hover:shadow-lg transition ease-in-out duration-300">
+      <h4 class="uppercase font-bold text-xs text-royalblue-light mb-2">Fast Hiring</h4>
+      <ul class="text-sm space-y-1 mb-4">
+        <li>• Hire within days, not weeks or months</li>
+        <li>• We do all the sourcing, screening, and coaching for you</li>
+      </ul>
+      <a href="#start" class="btn-neon block text-center text-royalblue-light font-semibold rounded-md py-2 text-sm cursor-pointer select-none">Start Hiring</a>
+    </div>
+  </div>
+</section>
+
+<!-- How it works -->
+<section class="max-w-4xl mx-auto mb-20 select-text px-5 sm:px-0">
+  <h3 class="text-white text-center font-extrabold text-2xl mb-8">How it works</h3>
+  <ol class="list-decimal list-inside space-y-6 text-slate-300 text-lg max-w-2xl mx-auto">
+    <li>
+      <span class="font-semibold text-white">Tell us what you want</span>
+      <p class="mt-1 text-base">Hit the “Start Hiring” button to tell us what videos you want to make and what type you’re looking for in a video editor.</p>
+    </li>
+    <li>
+      <span class="font-semibold text-white">Review samples</span>
+      <p class="mt-1 text-base">We send you editor profiles and sample work to review. You pick who you want to work with, and we provide guidance to help you collaborate.</p>
+    </li>
+    <li>
+      <span class="font-semibold text-white">Hire your editor</span>
+      <p class="mt-1 text-base">If you like your pick, we help you hire them full-time on your team, with a transparent contract and ongoing support.</p>
+    </li>
+  </ol>
+</section>
+
+<!-- Meet your video editor section -->
+<section class="max-w-6xl mx-auto mb-20 px-5 sm:px-8">
+  <h2 class="text-center text-white text-3xl font-extrabold mb-6 select-text">Meet your future video editor</h2>
+  <p class="max-w-3xl mx-auto mb-8 text-slate-300 text-center select-text">
+    Scroll through the top 3% of video editors that apply to Clippt. You’ll see editors with skills specific and creatively suited to support your video needs.
+  </p>
+  <div class="flex flex-wrap justify-center gap-6">
+    <!-- Example editors -->
+    <div class="glass-bg-light dark:glass-bg-dark p-4 rounded-xl w-48 shadow-lg hover:shadow-royalblue-400 transition cursor-default select-text">
+      <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/82362ec1-2c35-4b42-88e7-ed88792b8158.png" alt="Photo portrait of Maria, young female YouTube video editor with short black hair in clean natural lighting" class="rounded-full mx-auto mb-3 object-cover w-32 h-32" onerror="this.style.backgroundColor='#5368ff'" />
+      <div class="font-semibold text-white text-center">Maria</div>
+      <div class="text-royalblue-light text-sm text-center mt-1 font-mono tracking-wider">YouTube Editor</div>
+    </div>
+    <div class="glass-bg-light dark:glass-bg-dark p-4 rounded-xl w-48 shadow-lg hover:shadow-rose-400 transition cursor-default select-text">
+      <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/c2a472da-e08b-4ef8-8561-1a765c2f2cf9.png" alt="Photo portrait of Mia, female video editor wearing lavender sweater with friendly smile and simple background" class="rounded-full mx-auto mb-3 object-cover w-32 h-32" onerror="this.style.backgroundColor='#ce91ff'" />
+      <div class="font-semibold text-white text-center">Mia</div>
+      <div class="text-rose-400 text-sm text-center mt-1 font-mono tracking-wider">Podcasts Editor</div>
+    </div>
+    <div class="glass-bg-light dark:glass-bg-dark p-4 rounded-xl w-48 shadow-lg hover:shadow-green-500 transition cursor-default select-text">
+      <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/b796a1ab-edda-4729-b080-c79534e1d005.png" alt="Photo portrait of Ariel, casual smiling female video editor in bright yellow top with natural background" class="rounded-full mx-auto mb-3 object-cover w-32 h-32" onerror="this.style.backgroundColor='#86ff8a'" />
+      <div class="font-semibold text-white text-center">Ariel</div>
+      <div class="text-green-400 text-sm text-center mt-1 font-mono tracking-wider">TikTok Editor</div>
+    </div>
+    <div class="glass-bg-light dark:glass-bg-dark p-4 rounded-xl w-48 shadow-lg hover:shadow-cyan-400 transition cursor-default select-text">
+      <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/1d04a900-ebef-44f2-98d6-b8588ea8a7cc.png" alt="Photo portrait of Kim, professional female focused video editor in white shirt with cozy brown background" class="rounded-full mx-auto mb-3 object-cover w-32 h-32" onerror="this.style.backgroundColor='#83e1ff'" />
+      <div class="font-semibold text-white text-center">Kim</div>
+      <div class="text-cyan-400 text-sm text-center mt-1 font-mono tracking-wider">Podcast Editor</div>
+    </div>
+  </div>
+</section>
+
+<!-- Pricing Section -->
+<section class="max-w-4xl mx-auto mb-20 px-5 sm:px-0 select-text text-center">
+  <h3 class="text-white font-extrabold text-3xl mb-4">Simple pricing, exceptional value</h3>
+  <div class="glass-bg-light dark:glass-bg-dark rounded-xl border border-royalblue-400 p-6 max-w-lg mx-auto shadow-lg text-white">
+    <p class="text-4xl font-extrabold mb-2">$2,995 <span class="text-base font-normal align-top">per month</span></p>
+    <ul class="text-sm text-slate-300 text-left mb-5 space-y-2 leading-relaxed max-w-md mx-auto">
+      <li>★ Full-time editing based from the Philippines</li>
+      <li>★ All skill levels included (60+ hours per week)</li>
+      <li>★ World-class editing, motion graphics, and animation</li>
+      <li>★ Priority support and highest quality for you</li>
+    </ul>
+    <a href="#start" class="btn-neon inline-block px-7 py-3 rounded-lg font-semibold select-none">
+      Start Hiring
+    </a>
+  </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="max-w-3xl mx-auto px-5 sm:px-0 mb-24 select-text">
+  <h3 class="text-white text-center font-extrabold text-2xl mb-10">FAQs</h3>
+  <div class="space-y-4">
+    <details class="glass-bg-light dark:glass-bg-dark rounded-lg p-4 border border-royalblue-300 cursor-pointer" open>
+      <summary class="font-semibold text-white text-lg select-none">How much does this cost?</summary>
+      <p class="mt-2 text-slate-300 text-base leading-relaxed">Our standard pricing is $2,995 per editor per month, covering full-time dedicated editing support.</p>
+    </details>
+    <details class="glass-bg-light dark:glass-bg-dark rounded-lg p-4 border border-royalblue-300 cursor-pointer">
+      <summary class="font-semibold text-white text-lg select-none">Why work in the Philippines?</summary>
+      <p class="mt-2 text-slate-300 text-base leading-relaxed">The Philippines has a large pool of highly talented, English-speaking video editors at a much lower cost than the US or Europe.</p>
+    </details>
+    <details class="glass-bg-light dark:glass-bg-dark rounded-lg p-4 border border-royalblue-300 cursor-pointer">
+      <summary class="font-semibold text-white text-lg select-none">Will my video editor only work for me?</summary>
+      <p class="mt-2 text-slate-300 text-base leading-relaxed">Yes, each editor is dedicated full-time to your projects exclusively to ensure quality and consistency.</p>
+    </details>
+    <details class="glass-bg-light dark:glass-bg-dark rounded-lg p-4 border border-royalblue-300 cursor-pointer">
+      <summary class="font-semibold text-white text-lg select-none">What about time differences?</summary>
+      <p class="mt-2 text-slate-300 text-base leading-relaxed">The Philippines is in a convenient timezone for US clients with good overlap for communications.</p>
+    </details>
+    <details class="glass-bg-light dark:glass-bg-dark rounded-lg p-4 border border-royalblue-300 cursor-pointer">
+      <summary class="font-semibold text-white text-lg select-none">How many videos can my editor make?</summary>
+      <p class="mt-2 text-slate-300 text-base leading-relaxed">It depends on the complexity, but typically a full-time editor can make 10+ videos per week.</p>
+    </details>
+  </div>
+  <div class="w-full flex justify-center mt-8">
+    <button class="btn-neon px-6 py-2 rounded-lg font-semibold select-none cursor-pointer hover:brightness-110 transition">
+      See more
+    </button>
+  </div>
+</section>
+
+<!-- Ready Section -->
+<section id="start" class="max-w-7xl mx-auto px-5 sm:px-8 py-16 rounded-xl glass-bg-light dark:glass-bg-dark border border-gradient-to-r from-rose-400 via-royalblue-400 to-green-400 shadow-lg shadow-indigo-900/70 text-center overflow-hidden mb-24">
+  <h2 class="text-white text-3xl font-bold mb-10 select-text">Ready to get started?</h2>
+  <p class="max-w-2xl mx-auto mb-10 text-slate-300 text-lg select-text">
+    We find you the best overseas video editors for 70% less than US employees.
+  </p>
+  <a href="#start" class="btn-neon inline-block px-10 py-3 rounded-full font-semibold select-none text-white hover:brightness-110 transition mb-16">
+    START HIRING
+  </a>
+
+  <div class="flex flex-wrap justify-center gap-6">
+    <!-- Repeat editor cards with glowing borders -->
+    <div class="glass-bg-light dark:glass-bg-dark rounded-xl p-5 max-w-xs shadow-lg border-4 border-rose-400 border-opacity-60 hover:shadow-rose-400 transition cursor-default select-text">
+      <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/425d2049-5d5a-4c68-baed-97ec23e378fe.png" alt="Portrait of Maria, YouTube video editor with short hair, smiling, in bright light" class="rounded-full mx-auto mb-3 object-cover w-32 h-32" onerror="this.style.backgroundColor='#ff80a0'" />
+      <div class="text-white text-center font-bold text-xl">Maria</div>
+      <div class="text-rose-400 text-center text-sm mt-1 font-mono tracking-wide">YouTube Editor</div>
+    </div>
+    <div class="glass-bg-light dark:glass-bg-dark rounded-xl p-5 max-w-xs shadow-lg border-4 border-purple-500 border-opacity-60 hover:shadow-purple-400 transition cursor-default select-text">
+      <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/b66911e3-0b80-4447-8ba9-b501d70b9c19.png" alt="Portrait of Mia, podcaster/editor with friendly smile wearing lavender top" class="rounded-full mx-auto mb-3 object-cover w-32 h-32" onerror="this.style.backgroundColor='#ce91ff'" />
+      <div class="text-white text-center font-bold text-xl">Mia</div>
+      <div class="text-purple-400 text-center text-sm mt-1 font-mono tracking-wide">Podcast Editor</div>
+    </div>
+    <div class="glass-bg-light dark:glass-bg-dark rounded-xl p-5 max-w-xs shadow-lg border-4 border-blue-400 border-opacity-70 hover:shadow-blue-400 transition cursor-default select-text">
+      <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/d864e48e-5c90-45d1-82b1-a233848d6a04.png" alt="Portrait of Ariel, TikTok editor smiling with yellow top" class="rounded-full mx-auto mb-3 object-cover w-32 h-32" onerror="this.style.backgroundColor='#86ff8a'" />
+      <div class="text-white text-center font-bold text-xl">Ariel</div>
+      <div class="text-blue-400 text-center text-sm mt-1 font-mono tracking-wide">TikTok Editor</div>
+    </div>
+    <div class="glass-bg-light dark:glass-bg-dark rounded-xl p-5 max-w-xs shadow-lg border-4 border-orange-400 border-opacity-60 hover:shadow-orange-400 transition cursor-default select-text">
+      <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/1d3ee694-68d6-4aa5-9d7d-4615676822d3.png" alt="Portrait of Kim, podcast video editor wearing white shirt and warm light" class="rounded-full mx-auto mb-3 object-cover w-32 h-32" onerror="this.style.backgroundColor='#ffb87a'" />
+      <div class="text-white text-center font-bold text-xl">Kim</div>
+      <div class="text-orange-400 text-center text-sm mt-1 font-mono tracking-wide">Podcast Editor</div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="border-t border-gray-700 pt-10 pb-6 text-slate-400 text-sm select-none">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 flex flex-wrap justify-between items-center">
+    <div class="font-bold text-lg text-white select-text mb-3 md:mb-0">Clippt</div>
+    <nav class="flex space-x-6 text-xs sm:text-sm text-slate-300">
+      <a href="#services" class="hover:text-royalblue-400 transition">Where to what?</a>
+      <a href="#pricing" class="hover:text-royalblue-400 transition">How much can you save?</a>
+      <a href="#pricing" class="hover:text-royalblue-400 transition">Pricing</a>
+      <a href="#about" class="hover:text-royalblue-400 transition">About</a>
+      <a href="#guide" class="hover:text-royalblue-400 transition">Guide</a>
+      <a href="#faq" class="hover:text-royalblue-400 transition">FAQ</a>
+    </nav>
+  </div>
+  <div class="mt-8 text-center text-xs text-slate-600 dark:text-slate-500">
+    <p>© 2023 Clippt all rights reserved.</p>
+    <p><a href="#" class="hover:underline">Developer projects</a></p>
+    <p class="mt-2 text-xs text-slate-400 select-text">Powered by AwesomeTech</p>
+  </div>
+</footer>
+
+<script>
+  // Dark/light mode toggle with localStorage persistence
+  const toggleBtn = document.getElementById('mode-toggle');
+  const iconSun = document.getElementById('icon-sun');
+  const iconMoon = document.getElementById('icon-moon');
+
+  const enableLightMode = () => {
+    document.documentElement.classList.remove('dark');
+    iconSun.classList.add('hidden');
+    iconMoon.classList.remove('hidden');
+    localStorage.setItem('theme', 'light');
+  };
+
+  const enableDarkMode = () => {
+    document.documentElement.classList.add('dark');
+    iconSun.classList.remove('hidden');
+    iconMoon.classList.add('hidden');
+    localStorage.setItem('theme', 'dark');
+  };
+
+  // Initialize based on system or localStorage preference
+  const initTheme = () => {
+    const saved = localStorage.getItem('theme');
+    if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      enableDarkMode();
+    } else {
+      enableLightMode();
+    }
+  };
+
+  toggleBtn.addEventListener('click', () => {
+    if(document.documentElement.classList.contains('dark')) {
+      enableLightMode();
+    } else {
+      enableDarkMode();
+    }
+  });
+
+  initTheme();
+</script>
+</body>
+</html>
+

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Responsive Video Grid</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-black text-white">
+
+  <div id="video-grid" class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto px-4 py-10">
+    <!-- Videos will be injected here -->
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const videos = [
+        { category: 'shorts', src: 'Videos/Shorts1.mp4' },
+        { category: 'real-estate', src: 'Videos/RealEstate1.mp4' },
+        { category: 'ads', src: 'Videos/Ads.mp4' },
+        { category: 'podcast', src: 'Videos/Podcast1.mp4' },
+        { category: 'shorts', src: 'Videos/Shorts2.mp4' },
+        { category: 'real-estate', src: 'Videos/RealEstate2.mp4' },
+      ];
+
+      const grid = document.getElementById('video-grid');
+
+      videos.forEach((video) => {
+        const videoWrapper = document.createElement('div');
+        videoWrapper.className = 'video-container relative rounded-lg overflow-hidden bg-transparent flex justify-center items-center w-full';
+
+        const videoEl = document.createElement('video');
+        videoEl.src = video.src;
+        videoEl.controls = true;
+        videoEl.className = 'video-el w-full h-auto rounded-md';
+        videoEl.setAttribute('playsinline', '');
+        videoEl.setAttribute('muted', '');
+        videoEl.setAttribute('preload', 'metadata');
+
+        videoWrapper.appendChild(videoEl);
+        grid.appendChild(videoWrapper);
+      });
+    });
+  </script>
+
+</body>
+</html>

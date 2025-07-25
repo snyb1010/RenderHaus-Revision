@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RenderHaus | Hire Video Editor</title>
+
+  <!-- Tailwind CSS + Custom Theme -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#0076e8',
+            darkBg: '#0F0F1C',
+            darkText: '#F4F4F4',
+            gradientStart: '#FF6FD8',
+            gradientMid: '#4ADEDE',
+            gradientEnd: '#3813C2',
+            neonGreen: '#00FFA3'
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            heading: ['Poppins', 'sans-serif']
+          },
+          animation: {
+            gradientMove: 'gradientMove 6s ease infinite',
+            fadeSlideInUp: 'fadeSlideInUp 1s ease-out both',
+            pulseColor: 'pulseColor 2s infinite'
+          },
+          keyframes: {
+            gradientMove: {
+              '0%': { backgroundPosition: '0% 50%' },
+              '50%': { backgroundPosition: '100% 50%' },
+              '100%': { backgroundPosition: '0% 50%' }
+            },
+            fadeSlideInUp: {
+              '0%': { opacity: '0', transform: 'translateY(20px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' }
+            },
+            pulseColor: {
+              '0%, 100%': { color: '#F472B6' },
+              '50%': { color: '#C084FC' }
+            }
+          }
+        },
+        screens: {
+          sm: '300px',
+          md: '768px',
+          lg: '1024px',
+          xl: '1280px',
+          '2xl': '1536px'
+        }
+      }
+    }
+  </script>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@700&display=swap" rel="stylesheet" />
+  <!-- AOS CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
+  <!-- Vanta.js + Three.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.waves.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
+  <link rel="icon" type="image/png" href="Thumbnails/logo1.png" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body class="bg-darkBg text-darkText relative overflow-x-hidden">
+  <!-- Vanta Background -->
+  <div id="background" class="absolute inset-0 -z-10"></div>
+
+
+
+
+
+    
+    <!-- HEADER -->
+    <header id="main-header" class="fixed top-0 left-0 w-full z-50 glass-card shadow-md">
+      <nav class="w-full h-[80px] px-6 flex items-center justify-center relative">
+        <!-- Back Icon Link (left side) -->
+        <a href="index.html" class="absolute lg:left-6 sm:left-3 flex items-center space-x-2 text-white/90 hover:text-primary transition-colors duration-300 cursor-pointer select-none" aria-label="Go Back Home" title="Go Back Home">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 sm:h-7 sm:w-7 hover:scale-110 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+          </svg>
+          <span class="sm:opacity-0 lg:opacity-100 font-semibold text-sm sm:text-base tracking-wide">Go Back</span>
+        </a>
+
+        <!-- Logo (centered) -->
+        <div class="flex items-center space-x-2 sm:text-[24px] lg:text-[30px] font-heading font-bold text-[#0076e8] select-none pointer-events-none">
+          <img src="Thumbnails/logo3.png" alt="RenderHaus Logo" class="sm:h-[60px] lg:h-[80px] sm:w-[60px] lg:w-[80px] object-contain" />
+          <span class="bg-clip-text text-transparent bg-gradient-to-r from-gradientEnd via-neonGreen to-gradientEnd bg-[length:300%_300%] animate-gradientMove font-bold">
+            RenderHaus
+          </span>
+        </div>
+      </nav>
+    </header>
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- FORM SECTION with VANTA WAVES BACKGROUND -->
+    <section id="get-started-form" class="relative text-white pt-[90px] pb-16 lg:px-[160px] sm:px-full ">
+
+      <!-- Gradient Border Wrapper -->
+<div class="lg:py-[5px] sm:py-[5px] sm:px-[5px] rounded-3xl bg-gradient-to-r from-gradientStart via-neonGreen to-gradientEnd 
+            bg-[length:300%_300%] animate-gradientMove">
+
+        <!-- Form container with translucent bg and fadeSlideInUp animation -->
+        <div class="max-w-6xl mx-auto glass-card rounded-3xl sm:p-3 lg:p-16 shadow-xl bg-gray-900 animate-fadeSlideInUp">
+          <h2 class="lg:text-4xl sm:text-2xl font-bold mb-6 sm:mt-6 tracking-wide text-center">Let's Get Started!</h2>
+          <p class="lg:mb-20 sm:mb-10 text-gray-400 sm:text-[14px] lg:text-lg text-center">Tell us about your video needs. We’ll help you find the perfect editor.</p>
+
+          <form id="contact-form" class="space-y-10" novalidate>
+            <!-- Name -->
+  <!-- First and Last Name -->
+  <div class="grid lg:grid-cols-2 sm:grid-cols-1 lg:gap-8 sm:gap-6">
+    <div>
+      <label for="first-name" class="block mb-3 lg:text-[17px] sm:text-[15px] font-semibold text-gray-300">First Name</label>
+      <input id="first-name" name="first_name" type="text" placeholder="John" autocomplete="given-name" required
+        class="w-full p-4 bg-white/10 rounded-xl border border-transparent placeholder-gray-400 text-white
+              focus:outline-none focus:ring-4 focus:ring-primary/60 focus:border-primary transition duration-300 ease-in-out shadow-sm" />
+    </div>
+    <div>
+      <label for="last-name" class="block mb-3 lg:text-[17px] sm:text-[15px] font-semibold text-gray-300">Last Name</label>
+      <input id="last-name" name="last_name" type="text" placeholder="Smith" autocomplete="family-name" required
+        class="w-full p-4 bg-white/10 rounded-xl border border-transparent placeholder-gray-400 text-white
+              focus:outline-none focus:ring-4 focus:ring-primary/60 focus:border-primary transition duration-300 ease-in-out shadow-sm" />
+    </div>
+  </div>
+
+  <!-- Email & Phone -->
+  <div class="grid lg:grid-cols-2 sm:grid-cols-1 gap-8 mt-8">
+    <div>
+      <label for="email" class="block mb-3 lg:text-[17px] sm:text-[15px] font-semibold text-gray-300">Email Address</label>
+      <input id="email" name="email" type="email" placeholder="hi@company.com" autocomplete="email" required
+        class="w-full p-4 bg-white/10 rounded-xl border border-transparent placeholder-gray-400 text-white
+              focus:outline-none focus:ring-4 focus:ring-primary/60 focus:border-primary transition duration-300 ease-in-out shadow-sm" />
+    </div>
+<div>
+  <label for="phone" class="block mb-3 lg:text-[17px] sm:text-[15px] font-semibold text-gray-300">Phone Number</label>
+
+  <div class="flex gap-2">
+    
+    <!-- Country Code Input with Datalist -->
+    <input
+      list="countryCodes"
+      name="countryCode"
+      id="countryCode"
+      placeholder="+1"
+      required
+      class="bg-white/10 border border-white/20 text-white text-sm rounded-xl px-3 py-4 w-[120px] focus:ring-primary focus:border-primary outline-none"
+    />
+    <datalist id="countryCodes">
+      <option value="+1">🇺🇸 United States</option>
+      <option value="+61">🇦🇺 Australia</option>
+      <option value="+44">🇬🇧 United Kingdom</option>
+      <option value="+63">🇵🇭 Philippines</option>
+      <option value="+81">🇯🇵 Japan</option>
+      <option value="+971">🇦🇪 UAE</option>
+      <option value="+33">🇫🇷 France</option>
+      <option value="+49">🇩🇪 Germany</option>
+      <option value="+91">🇮🇳 India</option>
+
+      <!-- Add more if needed -->
+    </datalist>
+
+    <!-- Phone Number Field -->
+    <input
+      type="tel"
+      name="phone"
+      id="phone"
+      placeholder="9123456789"
+      autocomplete="tel"
+      required
+      class="w-full p-4 bg-white/10 rounded-xl border border-transparent placeholder-gray-400 text-white
+             focus:outline-none focus:ring-4 focus:ring-primary/60 focus:border-primary transition duration-300 ease-in-out shadow-sm"
+    />
+  </div>
+</div>
+
+  </div>
+
+  <!-- Hear About + Website -->
+  <div class="grid lg:grid-cols-2 sm:grid-cols-1 gap-8 mt-8">
+    <div>
+      <label for="hear-about" class="block mb-3 lg:text-[17px] sm:text-[15px] font-semibold text-gray-300">How did you hear about us?</label>
+      <select id="hear-about" name="hear_about" required
+        class="w-full p-4 bg-white/10 rounded-xl border border-transparent text-white placeholder-gray-400
+              focus:outline-none focus:ring-4 focus:ring-primary/60 focus:border-primary transition duration-300 ease-in-out shadow-sm">
+        <option value="" disabled selected>Select an option</option>
+        <option class="text-gray-600">Google</option>
+        <option class="text-gray-600">Facebook</option>
+        <option class="text-gray-600">X|Twitter</option>
+        <option class="text-gray-600">Instagram</option>
+        <option class="text-gray-600">Tiktok</option>
+        <option class="text-gray-600">LinkedIn</option>
+        <option class="text-gray-600">Referral</option>
+        <option class="text-gray-600">Other</option>
+      </select>
+    </div>
+    <div>
+      <label for="website" class="block mb-3 lg:text-[17px] sm:text-[15px] font-semibold text-gray-300">Company Website</label>
+      <input id="website" name="website" type="url" placeholder="website.com" autocomplete="url"
+        class="w-full p-4 bg-white/10 rounded-xl border border-transparent placeholder-gray-400 text-white
+              focus:outline-none focus:ring-4 focus:ring-primary/60 focus:border-primary transition duration-300 ease-in-out shadow-sm" />
+    </div>
+  </div>
+
+  <!-- Who needs editing -->
+  <div class="mt-8">
+    <p class="block mb-4 lg:text-[17px] sm:text-[15px] font-semibold text-gray-300 flex justify-center">Who needs video editing?</p>
+    <div class="flex items-center gap-10 justify-center">
+      <label for="editor-myself" class="flex items-center gap-3 cursor-pointer text-white">
+        <input id="editor-myself" type="radio" name="editor" value="myself" class="accent-primary w-5 h-5" />
+        <span class="lg:text-lg sm:text-[16px]">Myself</span>
+      </label>
+      <label for="editor-company" class="flex items-center gap-3 cursor-pointer text-white">
+        <input id="editor-company" type="radio" name="editor" value="company" class="accent-primary w-5 h-5" />
+        <span class="lg:text-lg sm:text-[16px]">A Company</span>
+      </label>
+    </div>
+  </div>
+
+  <!-- Budget + Hire Soon -->
+  <div class="grid lg:grid-cols-2 sm:grid-cols-1 gap-8 mt-8">
+    <div>
+      <label for="budget" class="block mb-3 lg:text-[17px] sm:text-[15px] font-semibold text-gray-300">What's your monthly budget for video marketing?</label>
+      <select id="budget" name="budget" required
+        class="w-full p-4 bg-white/10 rounded-xl border border-transparent text-white placeholder-gray-400
+              focus:outline-none focus:ring-4 focus:ring-primary/60 focus:border-primary transition duration-300 ease-in-out shadow-sm">
+        <option value="" disabled selected>Select an option</option>
+        <option class="text-gray-600">$500 - $1,000</option>
+        <option class="text-gray-600">$1,000 - $3,000</option>
+        <option class="text-gray-600">$3,000 - $5,000</option>
+        <option class="text-gray-600">$5,000+</option>
+      </select>
+    </div>
+    <div>
+      <label for="hire-soon" class="block mb-3 lg:text-[17px] sm:text-[15px] font-semibold text-gray-300">How soon do you need to hire?</label>
+      <select id="hire-soon" name="hire_soon" required
+        class="w-full p-4 bg-white/10 rounded-xl border border-transparent text-white placeholder-gray-400
+              focus:outline-none focus:ring-4 focus:ring-primary/60 focus:border-primary transition duration-300 ease-in-out shadow-sm">
+        <option value="" disabled selected>Select an option</option>
+        <option class="text-gray-600">Immediately</option>
+        <option class="text-gray-600">1-2 weeks</option>
+        <option class="text-gray-600">1 month</option>
+        <option class="text-gray-600">Not sure</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Message -->
+  <div class="mt-8">
+    <label for="description" class="block mb-3 lg:text-[17px] sm:text-[15px] font-semibold text-gray-300">Describe the videos you're looking to make</label>
+    <textarea id="description" name="message" placeholder="I am looking to make..." rows="5" required
+      class="w-full p-4 bg-white/10 rounded-xl border border-transparent placeholder-gray-400 text-white
+            focus:outline-none focus:ring-4 focus:ring-primary/60 focus:border-primary transition duration-300 ease-in-out shadow-sm"></textarea>
+  </div>
+
+            <!-- Submit Button -->
+            <div class="pt-6 flex justify-center items-center">
+              <button type="submit"
+                class="bg-primary hover:bg-primary/90 text-white lg:text-xl sm:text-[16px] font-bold lg:px-8 lg:py-4 sm:px-6 sm:py-3 rounded-2xl shadow-lg transition-transform duration-300 ease-in-out hover:scale-[1.03]">
+                Submit
+              </button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </section>
+
+<!-- Success Toast -->
+<div id="success-message" 
+     class="hidden fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2
+            p-4 bg-green-600 text-white rounded-xl text-center shadow-lg z-50
+            transition-opacity duration-500 opacity-0">
+  ✅ Message sent successfully!
+</div>
+
+<!-- Error Toast -->
+<div id="error-message" 
+     class="hidden fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2
+            p-4 bg-red-600 text-white rounded-xl text-center shadow-lg z-50
+            transition-opacity duration-500 opacity-0">
+  ❌ Failed to send. Please try again later.
+</div>
+
+<!-- EmailJS Library -->
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+  <!-- Footer -->
+  <footer class="text-gray-400 glass-card sm:pb-10 lg:pb-4 body-font">
+    <div class="container px-6 mx-auto flex flex-col lg:flex-row items-center lg:items-start justify-between space-y-6 lg:space-y-8 text-center lg:text-left">
+    <!-- Logo and Brand -->
+    <div class="flex items-center justify-center lg:justify-start space-x-2">
+      <img src="Thumbnails/logo3.png" alt="RenderHaus Logo" class="h-[80px] w-[80px] object-contain" />
+      <span class="lg:text-[32px] sm:text-[26px] font-heading font-bold bg-clip-text text-transparent bg-gradient-to-r from-gradientEnd via-neonGreen to-gradientEnd bg-[length:300%_300%] animate-gradientMove">
+        RenderHaus
+      </span>
+    </div>
+
+    <!-- Copyright and Terms -->
+    <div class="text-sm sm:space-y-0 lg:space-y-0 lg:space-x-4 flex flex-col lg:flex-row items-center">
+      <p class="lg:text-[16px] sm:text-[13px] text-darkText/80">© 2025 RenderHaus. All rights reserved.</p>
+      <a href="PDF file/Terms of Service.pdf" class="underline text-gray-400 lg:text-[16px] sm:text-[13px] hover:text-primary transition" target="_blank" rel="noopener noreferrer">
+      Terms of Service 
+      </a>
+    </div>
+      <!-- Social Icons -->
+      <div class="flex justify-center space-x-4">
+        <!-- Facebook -->
+        <a href="https://www.facebook.com/renderhaus.studio" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-[#1877F2]">
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
+          </svg>
+        </a>
+        <!-- Twitter / X -->
+        <a href="https://x.com/Render_Haus" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white">
+          <svg class="w-5 h-6" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M22.162 2H17.63l-4.385 5.856L8.888 2H2l7.488 10.273L2 22h4.531l4.381-5.856L15.111 22H22l-7.488-10.273z" />
+          </svg>
+        </a>
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/renderhaus_studio/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-pink-500">
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M7 2C4.243 2 2 4.243 2 7v10c0 2.757 2.243 5 5 5h10c2.757 0 5-2.243 5-5V7c0-2.757-2.243-5-5-5H7zm10 2a3 3 0 013 3v10a3 3 0 01-3 3H7a3 3 0 01-3-3V7a3 3 0 013-3h10zm-5 3a5 5 0 100 10 5 5 0 000-10zm0 2a3 3 0 110 6 3 3 0 010-6zm4.5-1.5a1 1 0 100 2 1 1 0 000-2z" />
+          </svg>
+        </a>
+        <!-- TikTok -->
+        <a href="https://www.tiktok.com/@renderhaus.studio" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-black">
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12.743 2H10v13.302a2.43 2.43 0 11-2.43-2.43c.087 0 .172.004.257.012V9.55a6.73 6.73 0 00-.257-.005A5.45 5.45 0 1013 14.997v-8.27a5.987 5.987 0 003 1.214V5.905a4.306 4.306 0 01-3-1.47V2z" />
+          </svg>
+        </a>
+        <!-- LinkedIn -->
+        <a href="https://www.linkedin.com/company/render-haus" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-[#0077B5]">
+          <svg class="w-6 h-6 ml-[-5px]" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M4.98 3.5A2.5 2.5 0 002.5 6a2.5 2.5 0 005 0 2.5 2.5 0 00-2.52-2.5zM2.5 8H7.5V21H2.5zM9.5 8h4.5v1.86h.07c.63-1.2 2.18-2.45 4.48-2.45C21.47 7.41 22 10 22 13.5V21h-5v-6.2c0-1.47-.03-3.37-2.06-3.37-2.06 0-2.38 1.6-2.38 3.26V21h-5V8z" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/background.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/contact-form.js"></script>
+</body>
+</html>

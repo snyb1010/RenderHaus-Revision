@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RenderHaus | Hire Video Editor</title>
+
+  <!-- Tailwind CSS + Custom Theme -->
+  <script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        colors: {
+          primary: '#0076e8',
+          darkBg: '#0F0F1C',
+          darkText: '#F4F4F4',
+          gradientStart: '#FF6FD8',
+          gradientMid: '#4ADEDE',
+          gradientEnd: '#3813C2',
+          neonGreen: '#00FFA3'
+        },
+        fontFamily: {
+          sans: ['Inter', 'sans-serif'],
+          heading: ['Poppins', 'sans-serif']
+        },
+        animation: {
+          gradientMove: 'gradientMove 6s ease infinite',
+          fadeSlideInUp: 'fadeSlideInUp 1s ease-out both',
+          pulseColor: 'pulseColor 2s infinite'
+        },
+        keyframes: {
+          gradientMove: {
+            '0%': { backgroundPosition: '0% 50%' },
+            '50%': { backgroundPosition: '100% 50%' },
+            '100%': { backgroundPosition: '0% 50%' }
+          },
+          fadeSlideInUp: {
+            '0%': { opacity: '0', transform: 'translateY(20px)' },
+            '100%': { opacity: '1', transform: 'translateY(0)' }
+          },
+          pulseColor: {
+            '0%, 100%': { color: '#F472B6' },
+            '50%': { color: '#C084FC' }
+          }
+        }
+      },
+      // 👇 Add this for custom breakpoints
+screens: {
+  sm: '300px',  // iPhones / newer Androids
+  md: '1024px',  // tablets portrait
+  lg: '1300px', // desktops
+}
+
+    }
+  }
+</script>
+
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@700&display=swap" rel="stylesheet">
+  <!-- AOS CSS -->
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+  <!-- Vanta.js + Three.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.waves.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
+  <link rel="icon" type="image/png" href="Thumbnails/logo1.png" />
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="bg-darkBg text-darkText relative overflow-x-hidden">
+  <!-- Vanta Background -->
+  <div id="background" class="absolute inset-0 -z-10"></div>
+
+
+
+
+
+
+
+
+
+
+
+<!-- HEADER -->
+<header id="main-header" class="fixed top-0 left-0 w-full z-50">
+  <nav id="navbar" class="w-full h-[80px] px-4 sm:px-2 lg:px-8 flex items-center justify-between transition-all duration-500 ease-in-out bg-transparent">
+    
+    <!-- Logo -->
+    <div class="flex items-center space-x-2 sm:text-[25px] lg:text-[30px] font-heading font-bold text-[#0076e8] select-none">
+      <img src="Thumbnails/logo3.png" alt="RenderHaus Logo" class="sm:h-[60px] lg:h-[80px] sm:w-[60px] lg:w-[80px] object-contain" />
+      <span class="bg-clip-text text-transparent bg-gradient-to-r from-gradientEnd via-neonGreen to-gradientEnd bg-[length:300%_300%] animate-gradientMove font-bold">
+        RenderHaus
+      </span>
+    </div>
+
+    <!-- Desktop Nav Links -->
+    <div class="sm:hidden md:flex lg:flex flex-1 justify-center">
+      <ul class="flex lg:space-x-[30px] md:space-x-[20px] md:text-[12px] lg:text-[18px] font-medium">
+        <li><a href="#how-it-works" class="hover:text-primary transition-colors duration-300">How It Works?</a></li>
+        <li><a href="#what-you-get" class="hover:text-primary transition-colors duration-300">What You Get?</a></li>
+        <li><a href="#pricing" class="hover:text-primary transition-colors duration-300">Pricing</a></li>
+        <li><a href="#who-renderhaus" class="hover:text-primary transition-colors duration-300">Who is RenderHaus?</a></li>
+        <li><a href="#why-renderhaus" class="hover:text-primary transition-colors duration-300">Why RenderHaus?</a></li>
+        <li><a href="#portfolio" class="hover:text-primary transition-colors duration-300">Client Work</a></li>
+      </ul>
+    </div>
+<!-- CTA + Hamburger -->
+<div class="flex items-center space-x-3">
+  <!-- CTA (hidden on very small screens) -->
+  <button id="nav-start-btn" onclick="location.href='get-started.html'"
+    class="sm:hidden md:inline-block lg:inline-block p-[3px] rounded-md bg-gradient-to-r from-gradientStart via-neonGreen to-gradientEnd bg-[length:300%_300%] animate-gradientMove 
+    opacity-0 translate-y-3 transition-all duration-500 ease-out hover:scale-105 hover:brightness-125 hover:shadow-[0_0_20px_#00FFA3]">
+    <div class="bg-darkBg md:px-4 md:py-2 lg:px-6 lg:py-3 rounded-md text-white font-semibold md:text-[14px] lg:text-[18px]">
+      Start Now
+    </div>
+  </button>
+
+  <!-- Hamburger Menu -->
+  <button id="open-menu" class="lg:hidden md:hidden text-darkText focus:outline-none">
+    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+    </svg>
+  </button>
+</div>
+</nav>
+</header>
+
+<!-- Mobile Menu -->
+<div id="mobileMenu"
+  class="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center 
+  transform translate-x-full opacity-0 pointer-events-none transition-all duration-500 ease-in-out origin-right lg:hidden">
+  
+  <button id="close-menu" class="absolute top-4 right-4 text-white">
+    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+    </svg>
+  </button>
+
+  <ul class="w-full max-w-xs mx-auto space-y-6 text-center text-xl text-white">
+    <li><a href="#how-it-works" class="block hover:text-primary transition">How It Works?</a></li>
+    <li><a href="#what-you-get" class="block hover:text-primary transition">What You Get?</a></li>
+    <li><a href="#pricing" class="block hover:text-primary transition">Pricing</a></li>
+    <li><a href="#who-renderhaus" class="block hover:text-primary transition">Who is RenderHaus?</a></li>
+    <li><a href="#why-renderhaus" class="block hover:text-primary transition">Why RenderHaus?</a></li>
+    <li><a href="#portfolio" class="block hover:text-primary transition">Client Work</a></li>
+    <li>
+      <button type="button" onclick="location.href='get-started.html'"
+        class="w-[150px] p-[3px] rounded-md bg-gradient-to-r from-gradientStart via-neonGreen to-gradientEnd bg-[length:300%_300%] animate-gradientMove hover:scale-105 hover:brightness-125 hover:shadow-[0_0_20px_#00FFA3]">
+        <div class="bg-darkBg px-5 py-2 sm:px-6 sm:py-3 rounded-md text-white font-semibold text-[16px] sm:text-[18px]">
+          Start Now
+        </div>
+      </button>
+    </li>
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  <!-- HERO SECTION -->
+  <section id="hero" class="relative max-w-6xl mx-auto lg:px-6 sm:px-3 mt-[100px] lg:pb-20 sm:pb-1 sm:pt-10 sm:pb-24 lg:pt-[80px] text-center">
+    <h2 class="mb-6 sm:text-3xl md:text-4xl lg:text-6xl font-heading font-extrabold tracking-tight leading-tight text-darkText animate-fadeSlideInUp">
+      Top-tier <span class="text-pink-400 animate-pulseColor">video editing</span> at a<br />
+      fraction of the cost
+    </h2>
+    <h1 class="mb-3 sm:text-2xl md:text-3xl lg:text-5xl font-heading font-extrabold tracking-tight leading-snug text-white animate-fadeSlideInUp">
+      A dedicated video editor -
+      <span class="bg-clip-text text-transparent bg-gradient-to-r from-gradientStart via-neonGreen to-gradientEnd bg-[length:300%_300%] animate-gradientMove font-bold">
+        Unlimited edits
+      </span>
+    </h1>
+    <p class="max-w-2xl mx-auto lg:mt-[40px] sm:mt-[30px] lg:mb-[50px] sm:mb-[35px] text-white/90 sm:text-[15px] lg:text-xl font-medium animate-fadeSlideInUp" style="animation-delay: 0.3s;">
+      Built for creators and agencies who want consistency, speed, and quality without managing freelancers.
+    </p>
+    <div class="flex justify-center gap-4 animate-fadeSlideInUp" style="animation-delay: 0.6s;">
+      <a href="get-started.html"
+        class="p-[4px] rounded-md bg-gradient-to-r from-gradientStart via-neonGreen to-gradientEnd bg-[length:300%_300%] animate-gradientMove hover:scale-105 hover:brightness-125 hover:shadow-[0_0_20px_#00FFA3] duration-300">
+        <div class="bg-darkBg lg:px-10 lg:py-3 sm:px-6 sm:py-3 rounded-md text-white font-semibold lg:text-[25px] sm:text-[18px]">Start Now</div>
+      </a>
+      <a href="#portfolio"
+        class="lg:px-8 lg:py-4 sm:px-4 sm:py-3 rounded-md text-white border-[3.5px] border-primary font-semibold text-xl transition-all duration-300 lg:text-[22px] sm:text-[16px] hover:bg-primary hover:text-white">
+        See Work
+      </a>
+    </div>
+  </section>
+
+
+
+
+
+
+
+
+
+
+<!-- Infinite Marquee (No Flick) -->
+<div id="marquee-container" class="overflow-hidden bg-gradient-to-r from-gradientEnd via-black to-neonGreen bg-[length:300%_300%] animate-gradientMove font-bold py-3 mt-3 relative" style="animation: fadeSlideInUp 0.8s ease-out, gradientMove 8s ease infinite;">
+  <div id="marquee-wrapper" class="flex w-max whitespace-nowrap items-center gap-6 will-change-transform">
+    <!-- This container will be filled with repeated content -->
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- How it Works -->
+<section id="how-it-works" class="text-darkText body-font backdrop-blur-md">
+  <div class="container px-5 lg:pt-[140px] sm:pt-[120px] pb-[140px] mx-auto mt-[-2px]">
+<div class="flex flex-col text-center w-full mb-10">
+  <h1 id="how-it-works-title" class="lg:text-[40px] sm:text-[35px] font-medium title-font text-white font-heading opacity-0 translate-y-5 transition-all duration-700 ease-out">
+    How It Works?
+  </h1>
+
+  <p id="how-it-works-desc" class="max-w-2xl mx-auto text-white/90 sm:text-[16px] lg:text-xl font-body opacity-0 translate-y-5 transition-all duration-700 ease-out mt-4">
+    Video editing without the back-and-forth.
+  </p>
+</div>
+
+<div class="flex flex-wrap lg:-m-4 sm:-m-6 text-center justify-center items-stretch">
+
+  <!-- Step 1 -->
+  <div class="lg:p-4 sm:p-2 w-full sm:w-1/2 lg:w-1/4 lg:flex lg:flex-col sm:flex sm:flex-row fade-in-up">
+    <div class="glass-card flex-grow px-4 py-6 rounded-2xl shadow-lg transition-transform sm:pb-[40px] hover:scale-105 lg:flex lg:flex-col">
+      <h2 class="title-font mb-4 font-medium text-3xl text-white font-heading">Step 1</h2>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+      stroke-width="1.5" stroke="currentColor"
+      class="text-blue-400 w-12 h-12 mb-3 inline-block mx-auto">
+        <path stroke-linecap="round" stroke-linejoin="round"
+      d="M2.25 12.75V12A2.25 2.25 0 0 1 4.5 9.75h15A2.25 2.25 0 0 1 21.75 12v.75m-8.69-6.44-2.12-2.12a1.5 1.5 0 0 0-1.061-.44H4.5A2.25 2.25 0 0 0 2.25 6v12a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9a2.25 2.25 0 0 0-2.25-2.25h-5.379a1.5 1.5 0 0 1-1.06-.44Z" />
+      </svg>
+      <h2 class="title-font mb-4 md:mb-[5px] font-medium lg:text-[20px] sm:text-[16px] text-white font-body lg:mt-[2px] sm:mt-[10px]">
+        Upload your raw footage to our shared folder
+      </h2>
+    </div>
+  </div>
+
+  <!-- Step 2 -->
+  <div class="lg:p-4 sm:p-2 w-full sm:w-1/2 lg:w-1/4 lg:flex lg:flex-col fade-in-up delay-100">
+    <div class="glass-card flex-grow px-4 py-6 rounded-2xl shadow-lg transition-transform sm:pb-[40px] hover:scale-105 flex flex-col">
+      <h2 class="title-font mb-4 font-medium text-3xl text-white font-heading">Step 2</h2>
+      <svg class="text-blue-400 w-12 h-12 mb-3 inline-block mx-auto" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+        <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path>
+        <circle cx="9" cy="7" r="4"></circle>
+        <path d="M23 21v-2a4 4 0 00-3-3.87m-4-12a4 4 0 010 7.75"></path>
+      </svg>
+      <h2 class="title-font mb-4 font-medium lg:text-[20px] sm:text-[16px] text-white font-body mt-auto">
+        Your dedicated editor starts working immediately
+      </h2>
+    </div>
+  </div>
+
+  <!-- Step 3 -->
+  <div class="lg:p-4 sm:p-2 w-full sm:w-1/2 lg:w-1/4 lg:flex lg:flex-col fade-in-up delay-200">
+    <div class="glass-card flex-grow px-4 py-6 rounded-2xl shadow-lg transition-transform sm:pb-[40px] hover:scale-105 flex flex-col">
+      <h2 class="title-font mb-4 font-medium text-3xl text-white font-heading">Step 3</h2>
+      <svg class="text-blue-400 w-12 h-12 mb-3 inline-block mx-auto" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+      </svg>
+      <h2 class="title-font lg:mb-4 md:mb-[29px] sm:mb-[54px] font-medium lg:text-[20px] sm:text-[16px] text-white font-body lg:mt-[2px] sm:mt-[10px]">
+        Review, revise, and approve
+      </h2>
+    </div>
+  </div>
+
+  <!-- Step 4 -->
+  <div class="lg:p-4 sm:p-2 w-full sm:w-1/2 lg:w-1/4 lg:flex lg:flex-col fade-in-up delay-300">
+    <div class="glass-card flex-grow px-4 py-6 rounded-2xl shadow-lg transition-transform sm:pb-[40px] hover:scale-105 flex flex-col">
+      <h2 class="title-font mb-4 font-medium text-3xl text-white font-heading">Step 4</h2>
+      <svg class="text-blue-400 w-12 h-12 mb-3 inline-block mx-auto" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5-5m0 0l5 5m-5-5v12" />
+      </svg>
+      <h2 class="title-font mb-4 font-medium lg:text-[20px] sm:text-[16px] text-white font-body mt-auto">
+        We deliver final files optimized for every platform
+      </h2>
+    </div>
+  </div>
+
+</div>
+
+
+    </div>
+  </div>
+  
+</section>
+
+
+
+
+
+
+
+
+
+
+
+<!-- We scale you -->
+<section class="bg-gray-900 relative overflow-hidden">
+  <!-- Animated Background Shapes -->
+
+  <!-- Top-left SVG blob -->
+  <svg class="absolute top-[-100px] left-[-100px] w-[400px] h-[400px] z-0 opacity-10" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <path fill="#3B82F6" d="M39.7,-69.1C49.2,-61.6,53.4,-44.4,60.1,-29.1C66.9,-13.8,76.2,0.5,74.1,12.4C71.9,24.4,58.2,33.9,44.7,44.3C31.2,54.6,17.9,65.8,2.7,66.8C-12.4,67.7,-24.8,58.3,-35.3,48.3C-45.8,38.3,-54.3,27.7,-61.6,14.6C-68.9,1.6,-74.9,-13.9,-69.5,-24.3C-64.2,-34.6,-47.6,-39.7,-33.8,-46.2C-19.9,-52.6,-9.9,-60.4,3.9,-66.3C17.7,-72.2,35.5,-76.7,39.7,-69.1Z" transform="translate(100 100)" />
+  </svg>
+
+  <!-- Bottom-right blurred circle -->
+  <div class="absolute bottom-[-80px] right-[-60px] w-[250px] h-[250px] bg-blue-500 opacity-20 rounded-full blur-2xl animate-pulse z-0"></div>
+
+  <!-- Content (z-10 to appear above shapes) -->
+  <div class="relative z-10 container px-5 py-[40px] mx-auto flex flex-wrap lg:flex-nowrap items-center">
+
+    <!-- Text Content -->
+    <div id="scale-text" class="w-full lg:w-1/2 sm:w-full content-center px-4 sm:px-0 mb-10 text-center lg:text-start opacity-0 translate-y-5 transition-all duration-700 ease-out">
+      <div class="w-full">
+        <h1 class="font-heading text-white mb-1 sm:text-[34px] md:text-[40px] lg:text-[40px]">Need <a class="text-pink-400 animate-pulseColor">30 Reels a week?</a></h1>
+        <h1 class="font-heading text-white mb-5 sm:text-[30px] md:text-[35px] lg:text-[40px]">A <a class="bg-clip-text sm:text-[30px] md:text-[35px] lg:text-[40px] text-transparent bg-gradient-to-r from-gradientStart via-neonGreen to-gradientEnd bg-[length:300%_300%] animate-gradientMove font-bold"> 10-minute YouTube edit? </a></h1>
+        <div class="font-sans text-white sm:text-[18px] md:text-[24px] lg:text-2xl">We scale with you.</div>
+      </div>
+    </div>
+
+    <!-- Image -->
+    <div id="scale-image" class="w-full lg:w-1/2 rounded-lg overflow-hidden lg:mt-0 opacity-0 translate-y-5 transition-all duration-700 ease-out hover:scale-105"> 
+      <img class="object-cover object-center lg:w-full lg:h-full sm:h-full md:h-[250px] md:w-[500px] md:ml-[240px] lg:ml-0 rounded-xl shadow-lg" src="Thumbnails/dummy1.png" alt="stats" />
+    </div>
+
+  </div>
+  
+</section>
+
+
+
+
+
+
+
+
+
+<!-- What you Get Section -->
+
+<section id="what-you-get" class="text-darkText body-font relative backdrop-blur-md overflow-hidden lg:py-[130px] sm:py-[100px]">
+
+  <div class="relative z-10 container mx-auto px-5 flex flex-col lg:flex-row items-center gap-10">
+    
+<!-- LEFT SIDE: Text & Arrow -->
+<div class="lg:w-1/3 w-full text-center lg:text-left relative" data-aos="fade-right">
+  
+  <!-- Curved background SVG -->
+
+  <svg class="absolute lg:-top-[360px] lg:-left-[300px] lg:w-[800px] lg:h-[800px] sm:-top-[300px] sm:-left-[10px] sm:w-[550px] sm:h-[550px] opacity-20 -z-10" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <path fill="url(#grad1)" d="M39.7,-69.1C49.2,-61.6,53.4,-44.4,60.1,-29.1C66.9,-13.8,76.2,0.5,74.1,12.4C71.9,24.4,58.2,33.9,44.7,44.3C31.2,54.6,17.9,65.8,2.7,66.8C-12.4,67.7,-24.8,58.3,-35.3,48.3C-45.8,38.3,-54.3,27.7,-61.6,14.6C-68.9,1.6,-74.9,-13.9,-69.5,-24.3C-64.2,-34.6,-47.6,-39.7,-33.8,-46.2C-19.9,-52.6,-9.9,-60.4,3.9,-66.3C17.7,-72.2,35.5,-76.7,39.7,-69.1Z" transform="translate(100 100)" />
+    <defs>
+      <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#3B82F6" />
+        <stop offset="100%" stop-color="#2563EB" />
+      </linearGradient>
+    </defs>
+  </svg>
+
+
+
+  <h1 class="sm:text-[30px] md:text-[35px] lg:mt-[-10px] lg:text-[40px] font-heading font-bold mb-3">What You Get?</h1>
+  <p class="sm:text-[18px] lg:text-2xl text-white/80 lg:mb-7 sm:mb-0">All plans include:</p>
+</div>
+
+
+    <!-- RIGHT SIDE: Glass Cards -->
+    <div class="lg:w-2/3 w-full grid md:grid-cols-2 gap-8">
+      
+<!-- Card 1 -->
+<div class="backdrop-blur-md bg-white/10 border border-white/10 rounded-2xl p-6 shadow-lg transition duration-300 flex items-center gap-8
+  hover:border-transparent hover:bg-gradient-to-r hover:from-blue-400/30 hover:to-blue-900/40"
+  data-aos="fade-up" data-aos-delay="100">
+  <div class="w-16 h-16 flex items-center justify-center rounded-full bg-blue-500 text-darkText font-bold text-3xl flex-shrink-0">
+          <svg class="text-darkText w-12 h-12 inline-block mx-auto" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+      </svg>
+  </div>
+  <h2 class="text-white sm:text-[17px] lg:text-[22px] font-semibold">1 dedicated video editor (8 hours/day)</h2>
+</div>
+
+<!-- Card 2 -->
+<div class="backdrop-blur-md bg-white/10 border border-white/10 rounded-2xl p-6 shadow-lg transition duration-300 flex items-center gap-8
+  hover:border-transparent hover:bg-gradient-to-r hover:from-blue-400/30 hover:to-blue-900/40"
+  data-aos="fade-up" data-aos-delay="200">
+  <div class="w-16 h-16 flex items-center justify-center rounded-full bg-blue-500 text-darkText font-bold text-3xl flex-shrink-0">
+              <svg class="text-darkText w-12 h-12 inline-block mx-auto" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+      </svg>
+  </div>
+  <h2 class="text-white sm:text-[17px] lg:text-[22px] font-semibold">Unlimited edits and revisions</h2>
+</div>
+
+<!-- Card 3 -->
+<div class="backdrop-blur-md bg-white/10 border border-white/10 rounded-2xl p-6 shadow-lg transition duration-300 flex items-center gap-8
+  hover:border-transparent hover:bg-gradient-to-r hover:from-blue-400/30 hover:to-blue-900/40"
+  data-aos="fade-up" data-aos-delay="300">
+  <div class="w-16 h-16 flex items-center justify-center rounded-full bg-blue-500 text-darkText font-bold text-3xl flex-shrink-0">
+              <svg class="text-darkText w-12 h-12 inline-block mx-auto" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+      </svg>
+  </div>
+  <h2 class="text-white sm:text-[17px] lg:text-[22px] font-semibold">24–72 hr turnaround time</h2>
+</div>
+
+<!-- Card 4 -->
+<div class="backdrop-blur-md bg-white/10 border border-white/10 rounded-2xl p-6 shadow-lg transition duration-300 flex items-center gap-8
+  hover:border-transparent hover:bg-gradient-to-r hover:from-blue-400/30 hover:to-blue-900/40"
+  data-aos="fade-up" data-aos-delay="400">
+  <div class="w-16 h-16 flex items-center justify-center rounded-full bg-blue-500 text-darkText font-bold text-3xl flex-shrink-0">
+              <svg class="text-darkText w-12 h-12 inline-block mx-auto" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+      </svg>
+  </div>
+  <h2 class="text-white sm:text-[17px] lg:text-[22px] font-semibold">Motion graphics, captions, repurposing</h2>
+</div>
+
+<!-- Card 5 -->
+<div class="md:col-span-1 backdrop-blur-md bg-white/10 border border-white/10 rounded-2xl p-6 shadow-lg transition duration-300 flex items-center gap-8
+  hover:border-transparent hover:bg-gradient-to-r hover:from-blue-400/30 hover:to-blue-900/40"
+  data-aos="fade-up" data-aos-delay="500">
+  <div class="w-16 h-16 flex items-center justify-center rounded-full bg-blue-500 text-darkText font-bold text-3xl flex-shrink-0">
+              <svg class="text-darkText w-12 h-12 inline-block mx-auto" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+      </svg>
+  </div>
+  <h2 class="text-white sm:text-[17px] lg:text-[22px] font-semibold">Slack, Trello, and Drive access</h2>
+</div>
+
+<!-- Card 6 -->
+<div class="md:col-span-1 backdrop-blur-md bg-white/10 border border-white/10 rounded-2xl p-6 shadow-lg transition duration-300 flex items-center gap-8
+  hover:border-transparent hover:bg-gradient-to-r hover:from-blue-400/30 hover:to-blue-900/40"
+  data-aos="fade-up" data-aos-delay="500">
+  <div class="w-16 h-16 flex items-center justify-center rounded-full bg-blue-500 text-darkText font-bold text-3xl flex-shrink-0">
+              <svg class="text-darkText w-12 h-12 inline-block mx-auto" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+      </svg>
+  </div>
+  <h2 class="text-white sm:text-[17px] lg:text-[22px] font-semibold">Customer Support</h2>
+</div>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+<!-- Built for... -->
+<section id="built-for" class="bg-gray-900 relative h-auto overflow-hidden">
+  <!-- Background Decorative Shapes -->
+  <svg class="absolute top-[-300px] right-[-130px] w-[500px] h-[900px] z-0 opacity-10" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <path fill="#3B82F6" d="M39.7,-69.1C49.2,-61.6,53.4,-44.4,60.1,-29.1C66.9,-13.8,76.2,0.5,74.1,12.4C71.9,24.4,58.2,33.9,44.7,44.3C31.2,54.6,17.9,65.8,2.7,66.8C-12.4,67.7,-24.8,58.3,-35.3,48.3C-45.8,38.3,-54.3,27.7,-61.6,14.6C-68.9,1.6,-74.9,-13.9,-69.5,-24.3C-64.2,-34.6,-47.6,-39.7,-33.8,-46.2C-19.9,-52.6,-9.9,-60.4,3.9,-66.3C17.7,-72.2,35.5,-76.7,39.7,-69.1Z" transform="translate(100 100)" />
+  </svg>
+
+  <!-- Bottom-right blue blur -->
+  <div class="absolute bottom-[-120px] left-[-60px] w-[250px] h-[250px] bg-blue-500 opacity-20 rounded-full blur-2xl animate-pulse z-0"></div>
+
+  <!-- Main Content -->
+  <div class="relative z-10 container px-5 py-[40px] mx-auto flex flex-wrap lg:flex-nowrap items-center">
+    
+    <!-- Desktop Image -->
+    <div class="hidden lg:block w-full lg:w-1/2">
+      <img src="Thumbnails/dummy2.png" class="rounded-xl shadow-lg transform transition-all duration-700 ease-in-out hover:scale-105 animate-fade-in" alt="desktop">
+    </div>
+
+    <!-- Mobile Image -->
+    <div class="block lg:hidden sm:w-full sm:h-[105px] md:h-[250px] md:w-[600px] md:ml-[195px] flex justify-center mb-6 px-4">
+      <img 
+        src="Thumbnails/dummy3.png" 
+        alt="mobile"
+        class="w-full max-w-[90%] rounded-xl shadow-lg transition-transform duration-500 ease-in-out hover:scale-105 animate-fade-in"
+      >
+    </div>
+
+    <!-- Text Content -->
+    <div id="scale-text" class="w-full lg:w-1/2 px-4 sm:px-0 mb-6 lg:mb-0">
+      <div class="w-full text-center lg:text-start">
+        <h1 class="font-heading text-darkText animate-slide-in-right mb-2 sm:text-[28px] md:text-[35px] lg:text-[40px] leading-tight">
+          Built for 
+          <span id="typewriter"
+  class="ml-1 sm:text-[28px] md:text-[40px] sm:block lg:inline lg:text-[45px] 
+        bg-clip-text text-transparent bg-gradient-to-r 
+        from-gradientStart via-neonGreen to-gradientEnd 
+        bg-[length:300%_300%] animate-gradientMove font-bold 
+        h-[1.2em] leading-[1.2em] overflow-hidden">
+</span>
+
+        </h1>
+        <h1 class="font-bold text-darkText sm:text-[17px] md:text-[20px] lg:text-[32px] animate-slide-in-right delay-[200ms]">
+          who want quality without bloated agency fees.
+        </h1>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+<!-- Pricing Section with Image + Features -->
+<section id="pricing" class=" text-darkText lg:pt-[70px] lg:pb-[150px] sm:pt-[150px] sm:pb-[100px] text-white body-font relative backdrop-blur-md overflow-hidden">
+  <!-- Decorative BG Blur -->
+  <div class="absolute right-[-120px] w-[300px] h-[200px] bg-blue-500 opacity-10 rounded-full blur-3xl z-0"></div>
+
+  <div class="container mx-auto px-6 relative z-10">
+    <h2 class="sm:text-3xl md:text-4xl lg:text-4xl font-bold text-center lg:mb-[70px] sm:mb-[40px] mt-[-20px]">Pricing</h2>
+
+    <div class="flex flex-col lg:flex-row items-center gap-10">
+      <!-- LEFT SIDE: Features -->
+      <div class="w-full lg:w-1/2 grid gap-4" id="features-list">
+        <!-- Feature 1 -->
+        <div class="feature-item flex items-center gap-4 sm:gap-6 p-4 sm:p-6 h-full bg-white/10 backdrop-blur-md border border-white/10 rounded-2xl shadow-lg transition duration-300 hover:border-transparent hover:bg-gradient-to-r hover:from-blue-400/30 hover:to-blue-900/40">
+          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" class="text-indigo-400 w-8 h-8 sm:w-10 sm:h-10 flex-shrink-0" viewBox="0 0 24 24">
+            <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
+            <path d="M22 4L12 14.01l-3-3"></path>
+          </svg>
+          <span class="font-medium sm:text-[16px] md:text-[20px] lg:text-[26px] text-white">No surprises</span>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="feature-item flex items-center gap-4 sm:gap-6 p-4 sm:p-6 h-full bg-white/10 backdrop-blur-md border border-white/10 rounded-2xl shadow-lg transition duration-300 hover:border-transparent hover:bg-gradient-to-r hover:from-blue-400/30 hover:to-blue-900/40">
+          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" class="text-indigo-400 w-8 h-8 sm:w-10 sm:h-10 flex-shrink-0" viewBox="0 0 24 24">
+            <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
+            <path d="M22 4L12 14.01l-3-3"></path>
+          </svg>
+          <span class="font-medium sm:text-[16px] md:text-[20px] lg:text-[26px] text-white">No overages</span>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="feature-item flex items-center gap-4 sm:gap-6 p-4 sm:p-6 h-full bg-white/10 backdrop-blur-md border border-white/10 rounded-2xl shadow-lg transition duration-300 hover:border-transparent hover:bg-gradient-to-r hover:from-blue-400/30 hover:to-blue-900/40">
+          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" class="text-indigo-400 w-8 h-8 sm:w-10 sm:h-10 flex-shrink-0" viewBox="0 0 24 24">
+            <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
+            <path d="M22 4L12 14.01l-3-3"></path>
+          </svg>
+          <span class="font-medium sm:text-[16px] md:text-[20px] lg:text-[26px] text-white">Cancel anytime with 7-day notice</span>
+        </div>
+
+        <!-- Custom Quote CTA -->
+        <div id="custom-quote" class="lg:mt-5 sm:mt-[50px] text-center">
+          <p class="sm:text-xl md:text-2xl lg:text-2xl text-white sm:mb-[20px]">Need a custom plan for your agency or brand?</p>
+          <a href="get-started.html" class="inline-block lg:px-6 lg:py-4 sm:px-4 sm:py-2 rounded-xl text-darkText lg:border-[5px] sm:border-[3px] border-primary font-header sm:text-[20px] transition-all duration-300 lg:text-[24px] hover:bg-primary hover:text-white sm:mb-[50px] hover:brightness-110">
+            Get a Custom Quote
+          </a>
+        </div>
+      </div>
+
+      <!-- RIGHT SIDE: Image and Price -->
+      <div class="w-full lg:w-1/2 relative max-w-md mx-auto lg:mt-[-285px]  sm:mt-[-60px] fade-up" id="price-section">
+        <h2 class="text-xl sm:text-2xl text-center mb-3 mt-[40px]">Flat monthly rate:</h2>
+
+        <!-- Image -->
+        <img src="Thumbnails/dummy6.png" alt="Person with whiteboard"
+          class="rounded-2xl shadow-xl lg:w-[500px] lg:h-[300px] md:w-[500px] md:h-[300px] sm:w-[250px] sm:h-[170px] object-cover">
+
+        <!-- Price Overlay -->
+        <div class="absolute left-[50%] top-[165px] transform -translate-x-1/2  
+        rotate-[-1deg] rounded-lg bg-gradient-to-r from-gradientStart via-neonGreen to-gradientEnd bg-[length:300%_300%] animate-gradientMove 
+        hover:scale-105 hover:brightness-125 hover:shadow-[0_0_20px_#00FFA3] duration-300 flex items-center justify-center
+        sm:w-[148px] sm:h-[75px] sm:left-[49.7%] sm:mt-[-8px] 
+        lg:mt-[50px] lg:h-[130px] lg:w-[260px] md:mt-[50px] md:h-[130px] md:w-[260px]">
+          <h3 class="bg-darkBg inline whitespace-nowrap lg:py-[32px] lg:px-[40px] md:py-[32px] md:px-[40px] text-white font-semibold text-[30px] rounded-lg sm:py-[20px] sm:px-[24px] sm:text-[18px] lg:text-[35px] md:text-[35px]">
+            $2,499
+            <span class="sm:text-[12px] lg:text-base md:text-base font-medium text-gray-300">USD</span>
+          </h3>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Who It's For? -->
+<section id="who-renderhaus" class="text-darkText body-font py-[55px] bg-gray-900 relative overflow-hidden fade-up-on-scroll">
+
+  <!-- Gradient Border Wrapper -->
+    
+    <!-- Inner Content -->
+    <div class="bg-gray-900 rounded-[10px] px-6 sm:px-12 md:px-[100px] lg:py-[120px] sm:py-[55px] relative z-10 fade-up-on-scroll">
+
+      <!-- Background Decorative Shapes -->
+      <div class="absolute top-[-150px] left-[-100px] w-[300px] h-[300px] bg-gradient-to-br from-blue-500 to-green-400 opacity-15 rounded-full blur-3xl z-0"></div>
+      <div class="absolute bottom-[-150px] right-[-120px] w-[250px] h-[250px] bg-pink-500 opacity-15 rounded-full blur-3xl z-0"></div>
+      <svg class="absolute top-[-400px] right-[-130px] w-[500px] h-[900px] z-0 opacity-10" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#3B82F6" d="M39.7,-69.1C49.2,-61.6,53.4,-44.4,60.1,-29.1C66.9,-13.8,76.2,0.5,74.1,12.4C71.9,24.4,58.2,33.9,44.7,44.3C31.2,54.6,17.9,65.8,2.7,66.8C-12.4,67.7,-24.8,58.3,-35.3,48.3C-45.8,38.3,-54.3,27.7,-61.6,14.6C-68.9,1.6,-74.9,-13.9,-69.5,-24.3C-64.2,-34.6,-47.6,-39.7,-33.8,-46.2C-19.9,-52.6,-9.9,-60.4,3.9,-66.3C17.7,-72.2,35.5,-76.7,39.7,-69.1Z" transform="translate(100 100)" />
+      </svg>
+      
+      <!-- Title -->
+      <div class="text-center mb-12 fade-up-on-scroll">
+        <h1 class="sm:text-[28px] lg:text-[40px] font-medium title-font text-white font-heading">
+          Who is RenderHaus designed for?
+        </h1>
+      </div>
+
+      <!-- Cards -->
+      <div class="flex flex-wrap justify-center items-stretch lg:-m-4 sm:-m-8">
+
+        <!-- CARD 1 -->
+        <div class="w-full sm:w-1/1 lg:w-1/4 md:w-2/4 p-4 group fade-up-on-scroll">
+          <div class="relative p-[2px] rounded-2xl bg-transparent hover:bg-gradient-to-r from-gradientStart via-neonGreen to-gradientEnd bg-[length:300%_300%] animate-gradientMove duration-300">
+            <div class="bg-gray-800 rounded-[14px] h-full px-6 py-8 shadow-lg overflow-hidden flex flex-col items-center text-center relative transition-all duration-300 group-hover:bg-darkBg">
+              
+              <img src="https://i.pinimg.com/736x/32/90/69/329069e1e145ea9ed0e2a9a48d0ac2d0.jpg" alt="Content Creators" class="w-20 h-20 object-cover rounded-full mb-4 group-hover:scale-110 group-hover:opacity-10 transition duration-300">
+
+              <h2 class="text-xl font-heading mb-2 group-hover:opacity-0 transition-opacity duration-300">Content Creators</h2>
+
+              <p class="text-white/90 text-[18px] font-heading absolute bottom-[40px] text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 max-w-[220px]">
+                Content creators scaling weekly output
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 2 -->
+        <div class="w-full sm:w-1/1 lg:w-1/4 md:w-2/4 p-4 group fade-up-on-scroll">
+          <div class="relative p-[2px] rounded-2xl bg-transparent hover:bg-gradient-to-r from-gradientStart via-neonGreen to-gradientEnd bg-[length:300%_300%] animate-gradientMove duration-300">
+            <div class="bg-gray-800 rounded-[14px] h-full px-6 py-8 shadow-lg overflow-hidden flex flex-col items-center text-center relative transition-all duration-300 group-hover:bg-darkBg">
+              
+              <img src="https://i.pinimg.com/1200x/f3/d6/35/f3d63548db2633e513e312cb33c41239.jpg" alt="Personal Brands" class="w-20 h-20 object-cover rounded-full mb-4 group-hover:scale-110 group-hover:opacity-10 transition duration-300">
+
+              <h2 class="text-xl font-heading mb-2 group-hover:opacity-0 transition-opacity duration-300">Personal Brands</h2>
+
+              <p class="text-white/90 text-[18px] font-heading absolute bottom-[40px] text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 max-w-[220px]">
+                Personal brands and coaches producing regular video
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 3 -->
+        <div class="w-full sm:w-1/1 lg:w-1/4 md:w-2/4 p-4 group fade-up-on-scroll">
+          <div class="relative p-[2px] rounded-2xl bg-transparent hover:bg-gradient-to-r from-gradientStart via-neonGreen to-gradientEnd bg-[length:300%_300%] animate-gradientMove duration-300">
+            <div class="bg-gray-800 rounded-[14px] h-full px-6 py-8 shadow-lg overflow-hidden flex flex-col items-center text-center relative transition-all duration-300 group-hover:bg-darkBg">
+              
+              <img src="https://i.pinimg.com/736x/11/4d/59/114d596c43d0531850b6d8777bd26208.jpg" alt="Agencies" class="w-20 h-20 object-cover rounded-full mb-4 group-hover:scale-110 group-hover:opacity-10 transition duration-300">
+
+              <h2 class="text-xl font-heading mb-2 group-hover:opacity-0 transition-opacity duration-300">Agencies</h2>
+
+              <p class="text-white/90 text-[18px] font-heading absolute bottom-[40px] text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 max-w-[220px]">
+                Agencies managing multiple client deliverables
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 4 -->
+        <div class="w-full sm:w-1/1 lg:w-1/4 md:w-2/4 p-4 group fade-up-on-scroll">
+          <div class="relative p-[2px] rounded-2xl bg-transparent hover:bg-gradient-to-r from-gradientStart via-neonGreen to-gradientEnd bg-[length:300%_300%] animate-gradientMove duration-300">
+            <div class="bg-gray-800 rounded-[14px] h-full px-6 py-8 shadow-lg overflow-hidden flex flex-col items-center text-center relative transition-all duration-300 group-hover:bg-darkBg">
+              
+              <img src="https://i.pinimg.com/736x/d7/ea/bd/d7eabdc15583039622ac7c6b3b26fbdb.jpg" alt="Startups" class="w-20 h-20 object-cover rounded-full mb-4 group-hover:scale-110 group-hover:opacity-10 transition duration-300">
+
+              <h2 class="text-xl font-heading mb-2 group-hover:opacity-0 transition-opacity duration-300">Startups</h2>
+
+              <p class="text-white/90 text-[18px] font-heading absolute bottom-[40px] text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 max-w-[220px]">
+                Startups creating marketing, podcast, or social content
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Why RenderHaus? -->
+<section id="why-renderhaus" class="text-gray-400 backdrop-blur-md body-font z-10">
+  <div class="container px-5 py-24 mx-auto">
+    <!-- Animated Section Title -->
+    <div class="flex flex-col text-center w-full mb-10 lg:mt-[-30px] sm:mt-0 fade-up-on-scroll feature-item">
+      <h1 class="sm:text-[30px] lg:text-[40px] font-medium title-font text-white font-heading">
+        Why RenderHaus?
+      </h1>
+    </div>
+
+    <div class="flex flex-wrap -m-4">
+      <!-- Item 1 -->
+      <div class="p-4 lg:w-1/2 md:w-1/2 sm:mb-[20px] lg:mb-0">
+        <div class="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left glow-img-wrapper">
+          <img src="Thumbnails/1.png" alt="team"
+            class="glow-img slide-img flex-shrink-0 rounded-lg lg:w-48 lg:h-48 object-cover object-center sm:mb-0 mb-4 sm:w-[100px] sm:h-[100px] feature-item" />
+          <div class="slide-text flex-grow sm:pl-8 feature-item">
+            <h2 class="title-font font-bold lg:text-[24px] sm:text-[16px] md:text-[18px] text-white">
+              We’re not freelancers. <br /> We’re your post team.
+            </h2>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 2 -->
+      <div class="lg:hidden md:hidden sm:block p-4 lg:w-1/2 md:w-1/2 sm:mb-[20px] lg:mb-0">
+        <div class="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left glow-img-wrapper">
+          <img src="Thumbnails/2.png" alt="team"
+            class="glow-img slide-img flex-shrink-0 rounded-lg lg:w-48 lg:h-48 object-cover object-center sm:mb-0 mb-4 sm:w-[100px] sm:h-[100px] feature-item" />
+          <div class="slide-text flex-grow sm:pl-8 feature-item">
+            <h2 class="title-font font-bold lg:text-[24px] sm:text-[16px] md:text-[18px] text-white">
+              Reliable. Fast. Organized.
+            </h2>
+          </div>
+        </div>
+      </div>
+      <!-- Item 2 -->
+      <div class="sm:hidden lg:block md:block p-4 lg:w-1/2 md:w-1/2 sm:mb-[20px] lg:mb-0">
+        <div class="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left glow-img-wrapper">
+          <img src="Thumbnails/3.png" alt="team"
+            class="glow-img slide-img flex-shrink-0 rounded-lg lg:w-48 lg:h-48 object-cover object-center sm:mb-0 mb-4 sm:w-[100px] sm:h-[100px] feature-item" />
+          <div class="slide-text flex-grow sm:pl-8 feature-item">
+            <h2 class="title-font font-bold lg:text-[24px] sm:text-[16px] md:text-[18px] text-white">
+              We scale with your content strategy
+            </h2>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 3 -->
+      <div class="lg:block md:block sm:hidden p-4 lg:w-1/2 md:w-1/2 sm:mb-[20px] lg:mb-0">
+        <div class="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left glow-img-wrapper">
+          <img src="Thumbnails/2.png" alt="team"
+            class="glow-img slide-img flex-shrink-0 rounded-lg lg:w-48 lg:h-48 object-cover object-center sm:mb-0 mb-4 sm:w-[100px] sm:h-[100px] feature-item" />
+          <div class="slide-text flex-grow sm:pl-8 feature-item">
+            <h2 class="title-font font-bold lg:text-[24px] sm:text-[16px] md:text-[18px] text-white">
+              Reliable. Fast. Organized.
+            </h2>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 3 -->
+      <div class="sm:block lg:hidden md:hidden p-4 lg:w-1/2 md:w-1/2 sm:mb-[20px] lg:mb-0">
+        <div class="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left glow-img-wrapper">
+          <img src="Thumbnails/3.png" alt="team"
+            class="glow-img slide-img flex-shrink-0 rounded-lg lg:w-48 lg:h-48 object-cover object-center sm:mb-0 mb-4 sm:w-[100px] sm:h-[100px] feature-item" />
+          <div class="slide-text flex-grow sm:pl-8 feature-item">
+            <h2 class="title-font font-bold lg:text-[24px] sm:text-[16px] md:text-[18px] text-white">
+              We scale with your content strategy
+            </h2>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 4 -->
+      <div class="p-4 lg:w-1/2 md:w-1/2 sm:mb-[20px] lg:mb-0">
+        <div class="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left glow-img-wrapper">
+          <img src="Thumbnails/4.png" alt="team"
+            class="glow-img slide-img flex-shrink-0 rounded-lg lg:w-48 lg:h-48 object-cover object-center sm:mb-0 mb-4 sm:w-[100px] sm:h-[100px] feature-item" />
+          <div class="slide-text flex-grow sm:pl-8 feature-item">
+            <h2 class="title-font font-bold lg:text-[24px] sm:text-[16px] md:text-[18px] text-white">
+              Modern workflow. Clean handoffs. No micromanaging.
+            </h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Video Showcase Section -->
+<section id="portfolio" class="relative text-gray-400 bg-darkBg body-font px-5 pt-[50px] pb-[140px] mx-auto overflow-hidden max-w-none">
+
+  <!-- Decorative Shapes -->
+  <div class="absolute -top-[200px] -right-[150px] w-[500px] h-[500px] bg-gradient-to-r from-pink-500 to-purple-500 opacity-5 rounded-full blur-3xl z-0"></div>
+  <div class="absolute -bottom-[150px] -left-[100px] w-[400px] h-[400px] bg-gradient-to-r from-blue-400 to-cyan-400 opacity-5 rounded-full blur-3xl z-0"></div>
+
+  <h3 class="text-center text-2xl sm:text-3xl font-bold mb-6 text-white z-10 relative fade-up-on-scroll">
+    To make videos like these:
+  </h3>
+
+  <div class="glass-card rounded-lg shadow-lg p-6 relative max-w-full mx-auto z-10">
+
+    <!-- Filter Buttons -->
+    <div id="filter-buttons" class="flex justify-center flex-wrap lg:gap-3 md:gap-3 sm:gap-2 mb-6">
+      <!-- Buttons will be injected here via JS -->
+    </div>
+
+    <!-- Video Grid -->
+    <div id="video-grid" class="video-grid">
+      <!-- Video cards injected here via JS -->
+    </div>
+
+    <p class="text-center text-white/60 italic mt-2 z-10 relative lg:text-[20px]">
+      ...but it's hard to find editors.
+    </p>
+
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Gradient Border Wrapper -->
+<div class="p-[3px] rounded-xl bg-gradient-to-r from-blue-500 via-teal-400 to-cyan-400">
+  <!-- Let's Get Started Section -->
+  <section id="get-started" class="text-gray-400 bg-gray-900 body-font rounded-lg">
+    <div class="container px-5 py-24 mx-auto">
+      <div class="flex flex-col lg:flex-row items-center justify-center text-center lg:text-left lg:justify-between gap-10">
+        <!-- Left: Text -->
+        <div class="lg:ml-[60px] animate-fade-in">
+          <h1 class="title-font font-bold text-white sm:text-2xl md:text-4xl lg:text-4xl mb-4">
+            Let’s Get Started!<br />
+            Want to see how it works?
+          </h1>
+          <p class="leading-relaxed sm:text-[16px] md:text-lg lg:text-lg text-gray-300">
+            Book a call or start your first project today.
+          </p>
+        </div>
+
+<!-- Right: Buttons -->
+<div class="flex flex-wrap justify-center lg:justify-end gap-4 animate-fade-in object-inline">
+  <a href="get-started.html"
+    class="inline-flex items-center justify-center p-[4px] rounded-md bg-gradient-to-r from-gradientStart via-neonGreen to-gradientEnd bg-[length:300%_300%] animate-gradientMove hover:scale-105 hover:brightness-125 hover:shadow-[0_0_20px_#00FFA3] duration-300 ">
+    <div class="bg-darkBg px-10 py-4 rounded-md text-white font-semibold lg:text-[20px] sm:text-[18px]">
+      Get Started
+    </div>
+  </a>
+
+  <a href="#portfolio"
+    class="inline-flex items-center justify-center px-4 py-4 rounded-md text-white border-[3.5px] border-primary font-semibold lg:text-[20px] transition-all duration-300 sm:text-[20px] hover:bg-primary hover:text-white">
+    View Client Work
+  </a>
+
+  <a href="#pricing"
+    class="inline-flex items-center justify-center px-6 py-4 rounded-md text-white border-[3.5px] border-primary font-semibold lg:text-[20px] transition-all duration-300 sm:text-[20px] hover:scale-110">
+    Talk to Sales
+  </a>
+</div>
+
+      </div>
+    </div>
+  </section>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Back to Top Button -->
+<button id="backToTop"
+  class="fixed bottom-6 right-6 z-[9999] w-12 h-12 bg-primary text-white rounded-full shadow-lg flex items-center justify-center transition-all duration-300 transform hover:scale-110 opacity-0 invisible">
+  <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+  </svg>
+</button>
+
+
+
+
+
+
+
+    
+  <!-- Footer -->
+  <footer class="text-gray-400 glass-card sm:pb-10 lg:pb-4 body-font">
+    <div class="container px-6 mx-auto flex flex-col lg:flex-row items-center lg:items-start justify-between space-y-6 lg:space-y-8 text-center lg:text-left">
+    <!-- Logo and Brand -->
+    <div class="flex items-center justify-center lg:justify-start space-x-2">
+      <img src="Thumbnails/logo3.png" alt="RenderHaus Logo" class="h-[80px] w-[80px] object-contain" />
+      <span class="lg:text-[32px] sm:text-[26px] font-heading font-bold bg-clip-text text-transparent bg-gradient-to-r from-gradientEnd via-neonGreen to-gradientEnd bg-[length:300%_300%] animate-gradientMove">
+        RenderHaus
+      </span>
+    </div>
+
+    <!-- Copyright and Terms -->
+    <div class="text-sm sm:space-y-0 lg:space-y-0 lg:space-x-4 flex flex-col lg:flex-row items-center">
+      <p class="lg:text-[16px] sm:text-[13px] text-darkText/80">© 2025 RenderHaus. All rights reserved.</p>
+      <a href="PDF file/Terms of Service.pdf" class="underline text-gray-400 lg:text-[16px] sm:text-[13px] hover:text-primary transition" target="_blank" rel="noopener noreferrer">
+      Terms of Service 
+      </a>
+    </div>
+      <!-- Social Icons -->
+      <div class="flex justify-center space-x-4">
+        <!-- Facebook -->
+        <a href="https://www.facebook.com/renderhaus.studio" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-[#1877F2]">
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
+          </svg>
+        </a>
+        <!-- Twitter / X -->
+        <a href="https://x.com/Render_Haus" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white">
+          <svg class="w-5 h-6" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M22.162 2H17.63l-4.385 5.856L8.888 2H2l7.488 10.273L2 22h4.531l4.381-5.856L15.111 22H22l-7.488-10.273z" />
+          </svg>
+        </a>
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/renderhaus_studio/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-pink-500">
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M7 2C4.243 2 2 4.243 2 7v10c0 2.757 2.243 5 5 5h10c2.757 0 5-2.243 5-5V7c0-2.757-2.243-5-5-5H7zm10 2a3 3 0 013 3v10a3 3 0 01-3 3H7a3 3 0 01-3-3V7a3 3 0 013-3h10zm-5 3a5 5 0 100 10 5 5 0 000-10zm0 2a3 3 0 110 6 3 3 0 010-6zm4.5-1.5a1 1 0 100 2 1 1 0 000-2z" />
+          </svg>
+        </a>
+        <!-- TikTok -->
+        <a href="https://www.tiktok.com/@renderhaus.studio" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-black">
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12.743 2H10v13.302a2.43 2.43 0 11-2.43-2.43c.087 0 .172.004.257.012V9.55a6.73 6.73 0 00-.257-.005A5.45 5.45 0 1013 14.997v-8.27a5.987 5.987 0 003 1.214V5.905a4.306 4.306 0 01-3-1.47V2z" />
+          </svg>
+        </a>
+        <!-- LinkedIn -->
+        <a href="https://www.linkedin.com/company/render-haus" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-[#0077B5]">
+          <svg class="w-6 h-6 ml-[-5px]" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M4.98 3.5A2.5 2.5 0 002.5 6a2.5 2.5 0 005 0 2.5 2.5 0 00-2.52-2.5zM2.5 8H7.5V21H2.5zM9.5 8h4.5v1.86h.07c.63-1.2 2.18-2.45 4.48-2.45C21.47 7.41 22 10 22 13.5V21h-5v-6.2c0-1.47-.03-3.37-2.06-3.37-2.06 0-2.38 1.6-2.38 3.26V21h-5V8z" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Scripts -->
+  <script src="js/background.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/contact-form.js"></script>
+  <script src="js/video.js"></script>
+  <script src="js/banner.js"></script>
+</body>
+</html>
